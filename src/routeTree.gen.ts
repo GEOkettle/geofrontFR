@@ -9,22 +9,112 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SigninRouteImport } from './routes/signin'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as Onboarding04RouteImport } from './routes/onboarding-04'
+import { Route as Onboarding03RouteImport } from './routes/onboarding-03'
+import { Route as Onboarding02RouteImport } from './routes/onboarding-02'
+import { Route as Onboarding01RouteImport } from './routes/onboarding-01'
+import { Route as AppRouteRouteImport } from './routes/_app/route'
 import { Route as ExampleIndexRouteImport } from './routes/example/index'
+import { Route as AppIndexRouteImport } from './routes/_app/index'
+import { Route as SeedHomeRouteImport } from './routes/seed.home'
 import { Route as ExampleExampleIdRouteImport } from './routes/example/$exampleId'
-import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
-import { Route as DemoFormSimpleRouteImport } from './routes/demo/form.simple'
-import { Route as DemoFormAddressRouteImport } from './routes/demo/form.address'
+import { Route as EcommercePayRouteImport } from './routes/ecommerce.pay'
+import { Route as AppMessagesRouteImport } from './routes/_app/messages'
+import { Route as AppInboxRouteImport } from './routes/_app/inbox'
+import { Route as AppCampaignsRouteImport } from './routes/_app/campaigns'
+import { Route as AppCalendarRouteImport } from './routes/_app/calendar'
+import { Route as AppUtilityRoadmapRouteImport } from './routes/_app/utility/roadmap'
+import { Route as AppUtilityFaqsRouteImport } from './routes/_app/utility/faqs'
+import { Route as AppUtilityEmptyStateRouteImport } from './routes/_app/utility/empty-state'
+import { Route as AppUtilityChangelogRouteImport } from './routes/_app/utility/changelog'
+import { Route as AppUtility404RouteImport } from './routes/_app/utility/404'
+import { Route as AppTasksListRouteImport } from './routes/_app/tasks/list'
+import { Route as AppTasksKanbanRouteImport } from './routes/_app/tasks/kanban'
+import { Route as AppSettingsPlansRouteImport } from './routes/_app/settings/plans'
+import { Route as AppSettingsNotificationsRouteImport } from './routes/_app/settings/notifications'
+import { Route as AppSettingsFeedbackRouteImport } from './routes/_app/settings/feedback'
+import { Route as AppSettingsBillingRouteImport } from './routes/_app/settings/billing'
+import { Route as AppSettingsAppsRouteImport } from './routes/_app/settings/apps'
+import { Route as AppSettingsAccountRouteImport } from './routes/_app/settings/account'
+import { Route as AppJobJobPostRouteImport } from './routes/_app/job/job-post'
+import { Route as AppJobJobListingRouteImport } from './routes/_app/job/job-listing'
+import { Route as AppJobCompanyProfileRouteImport } from './routes/_app/job/company-profile'
+import { Route as AppFinanceTransactionsRouteImport } from './routes/_app/finance/transactions'
+import { Route as AppFinanceTransactionDetailsRouteImport } from './routes/_app/finance/transaction-details'
+import { Route as AppFinanceCardsRouteImport } from './routes/_app/finance/cards'
+import { Route as AppEcommerceShop2RouteImport } from './routes/_app/ecommerce/shop-2'
+import { Route as AppEcommerceShopRouteImport } from './routes/_app/ecommerce/shop'
+import { Route as AppEcommerceProductRouteImport } from './routes/_app/ecommerce/product'
+import { Route as AppEcommerceOrdersRouteImport } from './routes/_app/ecommerce/orders'
+import { Route as AppEcommerceInvoicesRouteImport } from './routes/_app/ecommerce/invoices'
+import { Route as AppEcommerceCustomersRouteImport } from './routes/_app/ecommerce/customers'
+import { Route as AppEcommerceCart3RouteImport } from './routes/_app/ecommerce/cart-3'
+import { Route as AppEcommerceCart2RouteImport } from './routes/_app/ecommerce/cart-2'
+import { Route as AppEcommerceCartRouteImport } from './routes/_app/ecommerce/cart'
+import { Route as AppDashboardFintechRouteImport } from './routes/_app/dashboard/fintech'
+import { Route as AppDashboardAnalyticsRouteImport } from './routes/_app/dashboard/analytics'
+import { Route as AppComponentTooltipRouteImport } from './routes/_app/component/tooltip'
+import { Route as AppComponentTabsRouteImport } from './routes/_app/component/tabs'
+import { Route as AppComponentPaginationRouteImport } from './routes/_app/component/pagination'
+import { Route as AppComponentModalRouteImport } from './routes/_app/component/modal'
+import { Route as AppComponentIconsRouteImport } from './routes/_app/component/icons'
+import { Route as AppComponentFormRouteImport } from './routes/_app/component/form'
+import { Route as AppComponentDropdownRouteImport } from './routes/_app/component/dropdown'
+import { Route as AppComponentButtonRouteImport } from './routes/_app/component/button'
+import { Route as AppComponentBreadcrumbRouteImport } from './routes/_app/component/breadcrumb'
+import { Route as AppComponentBadgeRouteImport } from './routes/_app/component/badge'
+import { Route as AppComponentAvatarRouteImport } from './routes/_app/component/avatar'
+import { Route as AppComponentAlertRouteImport } from './routes/_app/component/alert'
+import { Route as AppComponentAccordionRouteImport } from './routes/_app/component/accordion'
+import { Route as AppCommunityUsersTilesRouteImport } from './routes/_app/community/users-tiles'
+import { Route as AppCommunityUsersTabsRouteImport } from './routes/_app/community/users-tabs'
+import { Route as AppCommunityProfileRouteImport } from './routes/_app/community/profile'
+import { Route as AppCommunityMeetupsPostRouteImport } from './routes/_app/community/meetups-post'
+import { Route as AppCommunityMeetupsRouteImport } from './routes/_app/community/meetups'
+import { Route as AppCommunityForumPostRouteImport } from './routes/_app/community/forum-post'
+import { Route as AppCommunityForumRouteImport } from './routes/_app/community/forum'
+import { Route as AppCommunityFeedRouteImport } from './routes/_app/community/feed'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SigninRoute = SigninRouteImport.update({
+  id: '/signin',
+  path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Onboarding04Route = Onboarding04RouteImport.update({
+  id: '/onboarding-04',
+  path: '/onboarding-04',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Onboarding03Route = Onboarding03RouteImport.update({
+  id: '/onboarding-03',
+  path: '/onboarding-03',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Onboarding02Route = Onboarding02RouteImport.update({
+  id: '/onboarding-02',
+  path: '/onboarding-02',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Onboarding01Route = Onboarding01RouteImport.update({
+  id: '/onboarding-01',
+  path: '/onboarding-01',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExampleIndexRoute = ExampleIndexRouteImport.update({
@@ -32,109 +122,795 @@ const ExampleIndexRoute = ExampleIndexRouteImport.update({
   path: '/example/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const SeedHomeRoute = SeedHomeRouteImport.update({
+  id: '/seed/home',
+  path: '/seed/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExampleExampleIdRoute = ExampleExampleIdRouteImport.update({
   id: '/example/$exampleId',
   path: '/example/$exampleId',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
-  id: '/demo/tanstack-query',
-  path: '/demo/tanstack-query',
+const EcommercePayRoute = EcommercePayRouteImport.update({
+  id: '/ecommerce/pay',
+  path: '/ecommerce/pay',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoFormSimpleRoute = DemoFormSimpleRouteImport.update({
-  id: '/demo/form/simple',
-  path: '/demo/form/simple',
-  getParentRoute: () => rootRouteImport,
+const AppMessagesRoute = AppMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => AppRouteRoute,
 } as any)
-const DemoFormAddressRoute = DemoFormAddressRouteImport.update({
-  id: '/demo/form/address',
-  path: '/demo/form/address',
-  getParentRoute: () => rootRouteImport,
+const AppInboxRoute = AppInboxRouteImport.update({
+  id: '/inbox',
+  path: '/inbox',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCampaignsRoute = AppCampaignsRouteImport.update({
+  id: '/campaigns',
+  path: '/campaigns',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCalendarRoute = AppCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUtilityRoadmapRoute = AppUtilityRoadmapRouteImport.update({
+  id: '/utility/roadmap',
+  path: '/utility/roadmap',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUtilityFaqsRoute = AppUtilityFaqsRouteImport.update({
+  id: '/utility/faqs',
+  path: '/utility/faqs',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUtilityEmptyStateRoute = AppUtilityEmptyStateRouteImport.update({
+  id: '/utility/empty-state',
+  path: '/utility/empty-state',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUtilityChangelogRoute = AppUtilityChangelogRouteImport.update({
+  id: '/utility/changelog',
+  path: '/utility/changelog',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUtility404Route = AppUtility404RouteImport.update({
+  id: '/utility/404',
+  path: '/utility/404',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppTasksListRoute = AppTasksListRouteImport.update({
+  id: '/tasks/list',
+  path: '/tasks/list',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppTasksKanbanRoute = AppTasksKanbanRouteImport.update({
+  id: '/tasks/kanban',
+  path: '/tasks/kanban',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppSettingsPlansRoute = AppSettingsPlansRouteImport.update({
+  id: '/settings/plans',
+  path: '/settings/plans',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppSettingsNotificationsRoute =
+  AppSettingsNotificationsRouteImport.update({
+    id: '/settings/notifications',
+    path: '/settings/notifications',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppSettingsFeedbackRoute = AppSettingsFeedbackRouteImport.update({
+  id: '/settings/feedback',
+  path: '/settings/feedback',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppSettingsBillingRoute = AppSettingsBillingRouteImport.update({
+  id: '/settings/billing',
+  path: '/settings/billing',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppSettingsAppsRoute = AppSettingsAppsRouteImport.update({
+  id: '/settings/apps',
+  path: '/settings/apps',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppSettingsAccountRoute = AppSettingsAccountRouteImport.update({
+  id: '/settings/account',
+  path: '/settings/account',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppJobJobPostRoute = AppJobJobPostRouteImport.update({
+  id: '/job/job-post',
+  path: '/job/job-post',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppJobJobListingRoute = AppJobJobListingRouteImport.update({
+  id: '/job/job-listing',
+  path: '/job/job-listing',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppJobCompanyProfileRoute = AppJobCompanyProfileRouteImport.update({
+  id: '/job/company-profile',
+  path: '/job/company-profile',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppFinanceTransactionsRoute = AppFinanceTransactionsRouteImport.update({
+  id: '/finance/transactions',
+  path: '/finance/transactions',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppFinanceTransactionDetailsRoute =
+  AppFinanceTransactionDetailsRouteImport.update({
+    id: '/finance/transaction-details',
+    path: '/finance/transaction-details',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppFinanceCardsRoute = AppFinanceCardsRouteImport.update({
+  id: '/finance/cards',
+  path: '/finance/cards',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceShop2Route = AppEcommerceShop2RouteImport.update({
+  id: '/ecommerce/shop-2',
+  path: '/ecommerce/shop-2',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceShopRoute = AppEcommerceShopRouteImport.update({
+  id: '/ecommerce/shop',
+  path: '/ecommerce/shop',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceProductRoute = AppEcommerceProductRouteImport.update({
+  id: '/ecommerce/product',
+  path: '/ecommerce/product',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceOrdersRoute = AppEcommerceOrdersRouteImport.update({
+  id: '/ecommerce/orders',
+  path: '/ecommerce/orders',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceInvoicesRoute = AppEcommerceInvoicesRouteImport.update({
+  id: '/ecommerce/invoices',
+  path: '/ecommerce/invoices',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceCustomersRoute = AppEcommerceCustomersRouteImport.update({
+  id: '/ecommerce/customers',
+  path: '/ecommerce/customers',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceCart3Route = AppEcommerceCart3RouteImport.update({
+  id: '/ecommerce/cart-3',
+  path: '/ecommerce/cart-3',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceCart2Route = AppEcommerceCart2RouteImport.update({
+  id: '/ecommerce/cart-2',
+  path: '/ecommerce/cart-2',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppEcommerceCartRoute = AppEcommerceCartRouteImport.update({
+  id: '/ecommerce/cart',
+  path: '/ecommerce/cart',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppDashboardFintechRoute = AppDashboardFintechRouteImport.update({
+  id: '/dashboard/fintech',
+  path: '/dashboard/fintech',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppDashboardAnalyticsRoute = AppDashboardAnalyticsRouteImport.update({
+  id: '/dashboard/analytics',
+  path: '/dashboard/analytics',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentTooltipRoute = AppComponentTooltipRouteImport.update({
+  id: '/component/tooltip',
+  path: '/component/tooltip',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentTabsRoute = AppComponentTabsRouteImport.update({
+  id: '/component/tabs',
+  path: '/component/tabs',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentPaginationRoute = AppComponentPaginationRouteImport.update({
+  id: '/component/pagination',
+  path: '/component/pagination',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentModalRoute = AppComponentModalRouteImport.update({
+  id: '/component/modal',
+  path: '/component/modal',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentIconsRoute = AppComponentIconsRouteImport.update({
+  id: '/component/icons',
+  path: '/component/icons',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentFormRoute = AppComponentFormRouteImport.update({
+  id: '/component/form',
+  path: '/component/form',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentDropdownRoute = AppComponentDropdownRouteImport.update({
+  id: '/component/dropdown',
+  path: '/component/dropdown',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentButtonRoute = AppComponentButtonRouteImport.update({
+  id: '/component/button',
+  path: '/component/button',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentBreadcrumbRoute = AppComponentBreadcrumbRouteImport.update({
+  id: '/component/breadcrumb',
+  path: '/component/breadcrumb',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentBadgeRoute = AppComponentBadgeRouteImport.update({
+  id: '/component/badge',
+  path: '/component/badge',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentAvatarRoute = AppComponentAvatarRouteImport.update({
+  id: '/component/avatar',
+  path: '/component/avatar',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentAlertRoute = AppComponentAlertRouteImport.update({
+  id: '/component/alert',
+  path: '/component/alert',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppComponentAccordionRoute = AppComponentAccordionRouteImport.update({
+  id: '/component/accordion',
+  path: '/component/accordion',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityUsersTilesRoute = AppCommunityUsersTilesRouteImport.update({
+  id: '/community/users-tiles',
+  path: '/community/users-tiles',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityUsersTabsRoute = AppCommunityUsersTabsRouteImport.update({
+  id: '/community/users-tabs',
+  path: '/community/users-tabs',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityProfileRoute = AppCommunityProfileRouteImport.update({
+  id: '/community/profile',
+  path: '/community/profile',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityMeetupsPostRoute = AppCommunityMeetupsPostRouteImport.update({
+  id: '/community/meetups-post',
+  path: '/community/meetups-post',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityMeetupsRoute = AppCommunityMeetupsRouteImport.update({
+  id: '/community/meetups',
+  path: '/community/meetups',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityForumPostRoute = AppCommunityForumPostRouteImport.update({
+  id: '/community/forum-post',
+  path: '/community/forum-post',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityForumRoute = AppCommunityForumRouteImport.update({
+  id: '/community/forum',
+  path: '/community/forum',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommunityFeedRoute = AppCommunityFeedRouteImport.update({
+  id: '/community/feed',
+  path: '/community/feed',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/': typeof AppIndexRoute
+  '/onboarding-01': typeof Onboarding01Route
+  '/onboarding-02': typeof Onboarding02Route
+  '/onboarding-03': typeof Onboarding03Route
+  '/onboarding-04': typeof Onboarding04Route
+  '/reset-password': typeof ResetPasswordRoute
+  '/signin': typeof SigninRoute
+  '/signup': typeof SignupRoute
+  '/calendar': typeof AppCalendarRoute
+  '/campaigns': typeof AppCampaignsRoute
+  '/inbox': typeof AppInboxRoute
+  '/messages': typeof AppMessagesRoute
+  '/ecommerce/pay': typeof EcommercePayRoute
   '/example/$exampleId': typeof ExampleExampleIdRoute
+  '/seed/home': typeof SeedHomeRoute
   '/example/': typeof ExampleIndexRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/community/feed': typeof AppCommunityFeedRoute
+  '/community/forum': typeof AppCommunityForumRoute
+  '/community/forum-post': typeof AppCommunityForumPostRoute
+  '/community/meetups': typeof AppCommunityMeetupsRoute
+  '/community/meetups-post': typeof AppCommunityMeetupsPostRoute
+  '/community/profile': typeof AppCommunityProfileRoute
+  '/community/users-tabs': typeof AppCommunityUsersTabsRoute
+  '/community/users-tiles': typeof AppCommunityUsersTilesRoute
+  '/component/accordion': typeof AppComponentAccordionRoute
+  '/component/alert': typeof AppComponentAlertRoute
+  '/component/avatar': typeof AppComponentAvatarRoute
+  '/component/badge': typeof AppComponentBadgeRoute
+  '/component/breadcrumb': typeof AppComponentBreadcrumbRoute
+  '/component/button': typeof AppComponentButtonRoute
+  '/component/dropdown': typeof AppComponentDropdownRoute
+  '/component/form': typeof AppComponentFormRoute
+  '/component/icons': typeof AppComponentIconsRoute
+  '/component/modal': typeof AppComponentModalRoute
+  '/component/pagination': typeof AppComponentPaginationRoute
+  '/component/tabs': typeof AppComponentTabsRoute
+  '/component/tooltip': typeof AppComponentTooltipRoute
+  '/dashboard/analytics': typeof AppDashboardAnalyticsRoute
+  '/dashboard/fintech': typeof AppDashboardFintechRoute
+  '/ecommerce/cart': typeof AppEcommerceCartRoute
+  '/ecommerce/cart-2': typeof AppEcommerceCart2Route
+  '/ecommerce/cart-3': typeof AppEcommerceCart3Route
+  '/ecommerce/customers': typeof AppEcommerceCustomersRoute
+  '/ecommerce/invoices': typeof AppEcommerceInvoicesRoute
+  '/ecommerce/orders': typeof AppEcommerceOrdersRoute
+  '/ecommerce/product': typeof AppEcommerceProductRoute
+  '/ecommerce/shop': typeof AppEcommerceShopRoute
+  '/ecommerce/shop-2': typeof AppEcommerceShop2Route
+  '/finance/cards': typeof AppFinanceCardsRoute
+  '/finance/transaction-details': typeof AppFinanceTransactionDetailsRoute
+  '/finance/transactions': typeof AppFinanceTransactionsRoute
+  '/job/company-profile': typeof AppJobCompanyProfileRoute
+  '/job/job-listing': typeof AppJobJobListingRoute
+  '/job/job-post': typeof AppJobJobPostRoute
+  '/settings/account': typeof AppSettingsAccountRoute
+  '/settings/apps': typeof AppSettingsAppsRoute
+  '/settings/billing': typeof AppSettingsBillingRoute
+  '/settings/feedback': typeof AppSettingsFeedbackRoute
+  '/settings/notifications': typeof AppSettingsNotificationsRoute
+  '/settings/plans': typeof AppSettingsPlansRoute
+  '/tasks/kanban': typeof AppTasksKanbanRoute
+  '/tasks/list': typeof AppTasksListRoute
+  '/utility/404': typeof AppUtility404Route
+  '/utility/changelog': typeof AppUtilityChangelogRoute
+  '/utility/empty-state': typeof AppUtilityEmptyStateRoute
+  '/utility/faqs': typeof AppUtilityFaqsRoute
+  '/utility/roadmap': typeof AppUtilityRoadmapRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/onboarding-01': typeof Onboarding01Route
+  '/onboarding-02': typeof Onboarding02Route
+  '/onboarding-03': typeof Onboarding03Route
+  '/onboarding-04': typeof Onboarding04Route
+  '/reset-password': typeof ResetPasswordRoute
+  '/signin': typeof SigninRoute
+  '/signup': typeof SignupRoute
+  '/calendar': typeof AppCalendarRoute
+  '/campaigns': typeof AppCampaignsRoute
+  '/inbox': typeof AppInboxRoute
+  '/messages': typeof AppMessagesRoute
+  '/ecommerce/pay': typeof EcommercePayRoute
   '/example/$exampleId': typeof ExampleExampleIdRoute
+  '/seed/home': typeof SeedHomeRoute
+  '/': typeof AppIndexRoute
   '/example': typeof ExampleIndexRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/community/feed': typeof AppCommunityFeedRoute
+  '/community/forum': typeof AppCommunityForumRoute
+  '/community/forum-post': typeof AppCommunityForumPostRoute
+  '/community/meetups': typeof AppCommunityMeetupsRoute
+  '/community/meetups-post': typeof AppCommunityMeetupsPostRoute
+  '/community/profile': typeof AppCommunityProfileRoute
+  '/community/users-tabs': typeof AppCommunityUsersTabsRoute
+  '/community/users-tiles': typeof AppCommunityUsersTilesRoute
+  '/component/accordion': typeof AppComponentAccordionRoute
+  '/component/alert': typeof AppComponentAlertRoute
+  '/component/avatar': typeof AppComponentAvatarRoute
+  '/component/badge': typeof AppComponentBadgeRoute
+  '/component/breadcrumb': typeof AppComponentBreadcrumbRoute
+  '/component/button': typeof AppComponentButtonRoute
+  '/component/dropdown': typeof AppComponentDropdownRoute
+  '/component/form': typeof AppComponentFormRoute
+  '/component/icons': typeof AppComponentIconsRoute
+  '/component/modal': typeof AppComponentModalRoute
+  '/component/pagination': typeof AppComponentPaginationRoute
+  '/component/tabs': typeof AppComponentTabsRoute
+  '/component/tooltip': typeof AppComponentTooltipRoute
+  '/dashboard/analytics': typeof AppDashboardAnalyticsRoute
+  '/dashboard/fintech': typeof AppDashboardFintechRoute
+  '/ecommerce/cart': typeof AppEcommerceCartRoute
+  '/ecommerce/cart-2': typeof AppEcommerceCart2Route
+  '/ecommerce/cart-3': typeof AppEcommerceCart3Route
+  '/ecommerce/customers': typeof AppEcommerceCustomersRoute
+  '/ecommerce/invoices': typeof AppEcommerceInvoicesRoute
+  '/ecommerce/orders': typeof AppEcommerceOrdersRoute
+  '/ecommerce/product': typeof AppEcommerceProductRoute
+  '/ecommerce/shop': typeof AppEcommerceShopRoute
+  '/ecommerce/shop-2': typeof AppEcommerceShop2Route
+  '/finance/cards': typeof AppFinanceCardsRoute
+  '/finance/transaction-details': typeof AppFinanceTransactionDetailsRoute
+  '/finance/transactions': typeof AppFinanceTransactionsRoute
+  '/job/company-profile': typeof AppJobCompanyProfileRoute
+  '/job/job-listing': typeof AppJobJobListingRoute
+  '/job/job-post': typeof AppJobJobPostRoute
+  '/settings/account': typeof AppSettingsAccountRoute
+  '/settings/apps': typeof AppSettingsAppsRoute
+  '/settings/billing': typeof AppSettingsBillingRoute
+  '/settings/feedback': typeof AppSettingsFeedbackRoute
+  '/settings/notifications': typeof AppSettingsNotificationsRoute
+  '/settings/plans': typeof AppSettingsPlansRoute
+  '/tasks/kanban': typeof AppTasksKanbanRoute
+  '/tasks/list': typeof AppTasksListRoute
+  '/utility/404': typeof AppUtility404Route
+  '/utility/changelog': typeof AppUtilityChangelogRoute
+  '/utility/empty-state': typeof AppUtilityEmptyStateRoute
+  '/utility/faqs': typeof AppUtilityFaqsRoute
+  '/utility/roadmap': typeof AppUtilityRoadmapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/_app': typeof AppRouteRouteWithChildren
+  '/onboarding-01': typeof Onboarding01Route
+  '/onboarding-02': typeof Onboarding02Route
+  '/onboarding-03': typeof Onboarding03Route
+  '/onboarding-04': typeof Onboarding04Route
+  '/reset-password': typeof ResetPasswordRoute
+  '/signin': typeof SigninRoute
+  '/signup': typeof SignupRoute
+  '/_app/calendar': typeof AppCalendarRoute
+  '/_app/campaigns': typeof AppCampaignsRoute
+  '/_app/inbox': typeof AppInboxRoute
+  '/_app/messages': typeof AppMessagesRoute
+  '/ecommerce/pay': typeof EcommercePayRoute
   '/example/$exampleId': typeof ExampleExampleIdRoute
+  '/seed/home': typeof SeedHomeRoute
+  '/_app/': typeof AppIndexRoute
   '/example/': typeof ExampleIndexRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/_app/community/feed': typeof AppCommunityFeedRoute
+  '/_app/community/forum': typeof AppCommunityForumRoute
+  '/_app/community/forum-post': typeof AppCommunityForumPostRoute
+  '/_app/community/meetups': typeof AppCommunityMeetupsRoute
+  '/_app/community/meetups-post': typeof AppCommunityMeetupsPostRoute
+  '/_app/community/profile': typeof AppCommunityProfileRoute
+  '/_app/community/users-tabs': typeof AppCommunityUsersTabsRoute
+  '/_app/community/users-tiles': typeof AppCommunityUsersTilesRoute
+  '/_app/component/accordion': typeof AppComponentAccordionRoute
+  '/_app/component/alert': typeof AppComponentAlertRoute
+  '/_app/component/avatar': typeof AppComponentAvatarRoute
+  '/_app/component/badge': typeof AppComponentBadgeRoute
+  '/_app/component/breadcrumb': typeof AppComponentBreadcrumbRoute
+  '/_app/component/button': typeof AppComponentButtonRoute
+  '/_app/component/dropdown': typeof AppComponentDropdownRoute
+  '/_app/component/form': typeof AppComponentFormRoute
+  '/_app/component/icons': typeof AppComponentIconsRoute
+  '/_app/component/modal': typeof AppComponentModalRoute
+  '/_app/component/pagination': typeof AppComponentPaginationRoute
+  '/_app/component/tabs': typeof AppComponentTabsRoute
+  '/_app/component/tooltip': typeof AppComponentTooltipRoute
+  '/_app/dashboard/analytics': typeof AppDashboardAnalyticsRoute
+  '/_app/dashboard/fintech': typeof AppDashboardFintechRoute
+  '/_app/ecommerce/cart': typeof AppEcommerceCartRoute
+  '/_app/ecommerce/cart-2': typeof AppEcommerceCart2Route
+  '/_app/ecommerce/cart-3': typeof AppEcommerceCart3Route
+  '/_app/ecommerce/customers': typeof AppEcommerceCustomersRoute
+  '/_app/ecommerce/invoices': typeof AppEcommerceInvoicesRoute
+  '/_app/ecommerce/orders': typeof AppEcommerceOrdersRoute
+  '/_app/ecommerce/product': typeof AppEcommerceProductRoute
+  '/_app/ecommerce/shop': typeof AppEcommerceShopRoute
+  '/_app/ecommerce/shop-2': typeof AppEcommerceShop2Route
+  '/_app/finance/cards': typeof AppFinanceCardsRoute
+  '/_app/finance/transaction-details': typeof AppFinanceTransactionDetailsRoute
+  '/_app/finance/transactions': typeof AppFinanceTransactionsRoute
+  '/_app/job/company-profile': typeof AppJobCompanyProfileRoute
+  '/_app/job/job-listing': typeof AppJobJobListingRoute
+  '/_app/job/job-post': typeof AppJobJobPostRoute
+  '/_app/settings/account': typeof AppSettingsAccountRoute
+  '/_app/settings/apps': typeof AppSettingsAppsRoute
+  '/_app/settings/billing': typeof AppSettingsBillingRoute
+  '/_app/settings/feedback': typeof AppSettingsFeedbackRoute
+  '/_app/settings/notifications': typeof AppSettingsNotificationsRoute
+  '/_app/settings/plans': typeof AppSettingsPlansRoute
+  '/_app/tasks/kanban': typeof AppTasksKanbanRoute
+  '/_app/tasks/list': typeof AppTasksListRoute
+  '/_app/utility/404': typeof AppUtility404Route
+  '/_app/utility/changelog': typeof AppUtilityChangelogRoute
+  '/_app/utility/empty-state': typeof AppUtilityEmptyStateRoute
+  '/_app/utility/faqs': typeof AppUtilityFaqsRoute
+  '/_app/utility/roadmap': typeof AppUtilityRoadmapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
-    | '/demo/tanstack-query'
+    | '/onboarding-01'
+    | '/onboarding-02'
+    | '/onboarding-03'
+    | '/onboarding-04'
+    | '/reset-password'
+    | '/signin'
+    | '/signup'
+    | '/calendar'
+    | '/campaigns'
+    | '/inbox'
+    | '/messages'
+    | '/ecommerce/pay'
     | '/example/$exampleId'
+    | '/seed/home'
     | '/example/'
-    | '/demo/form/address'
-    | '/demo/form/simple'
+    | '/community/feed'
+    | '/community/forum'
+    | '/community/forum-post'
+    | '/community/meetups'
+    | '/community/meetups-post'
+    | '/community/profile'
+    | '/community/users-tabs'
+    | '/community/users-tiles'
+    | '/component/accordion'
+    | '/component/alert'
+    | '/component/avatar'
+    | '/component/badge'
+    | '/component/breadcrumb'
+    | '/component/button'
+    | '/component/dropdown'
+    | '/component/form'
+    | '/component/icons'
+    | '/component/modal'
+    | '/component/pagination'
+    | '/component/tabs'
+    | '/component/tooltip'
+    | '/dashboard/analytics'
+    | '/dashboard/fintech'
+    | '/ecommerce/cart'
+    | '/ecommerce/cart-2'
+    | '/ecommerce/cart-3'
+    | '/ecommerce/customers'
+    | '/ecommerce/invoices'
+    | '/ecommerce/orders'
+    | '/ecommerce/product'
+    | '/ecommerce/shop'
+    | '/ecommerce/shop-2'
+    | '/finance/cards'
+    | '/finance/transaction-details'
+    | '/finance/transactions'
+    | '/job/company-profile'
+    | '/job/job-listing'
+    | '/job/job-post'
+    | '/settings/account'
+    | '/settings/apps'
+    | '/settings/billing'
+    | '/settings/feedback'
+    | '/settings/notifications'
+    | '/settings/plans'
+    | '/tasks/kanban'
+    | '/tasks/list'
+    | '/utility/404'
+    | '/utility/changelog'
+    | '/utility/empty-state'
+    | '/utility/faqs'
+    | '/utility/roadmap'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/about'
-    | '/demo/tanstack-query'
+    | '/onboarding-01'
+    | '/onboarding-02'
+    | '/onboarding-03'
+    | '/onboarding-04'
+    | '/reset-password'
+    | '/signin'
+    | '/signup'
+    | '/calendar'
+    | '/campaigns'
+    | '/inbox'
+    | '/messages'
+    | '/ecommerce/pay'
     | '/example/$exampleId'
+    | '/seed/home'
+    | '/'
     | '/example'
-    | '/demo/form/address'
-    | '/demo/form/simple'
+    | '/community/feed'
+    | '/community/forum'
+    | '/community/forum-post'
+    | '/community/meetups'
+    | '/community/meetups-post'
+    | '/community/profile'
+    | '/community/users-tabs'
+    | '/community/users-tiles'
+    | '/component/accordion'
+    | '/component/alert'
+    | '/component/avatar'
+    | '/component/badge'
+    | '/component/breadcrumb'
+    | '/component/button'
+    | '/component/dropdown'
+    | '/component/form'
+    | '/component/icons'
+    | '/component/modal'
+    | '/component/pagination'
+    | '/component/tabs'
+    | '/component/tooltip'
+    | '/dashboard/analytics'
+    | '/dashboard/fintech'
+    | '/ecommerce/cart'
+    | '/ecommerce/cart-2'
+    | '/ecommerce/cart-3'
+    | '/ecommerce/customers'
+    | '/ecommerce/invoices'
+    | '/ecommerce/orders'
+    | '/ecommerce/product'
+    | '/ecommerce/shop'
+    | '/ecommerce/shop-2'
+    | '/finance/cards'
+    | '/finance/transaction-details'
+    | '/finance/transactions'
+    | '/job/company-profile'
+    | '/job/job-listing'
+    | '/job/job-post'
+    | '/settings/account'
+    | '/settings/apps'
+    | '/settings/billing'
+    | '/settings/feedback'
+    | '/settings/notifications'
+    | '/settings/plans'
+    | '/tasks/kanban'
+    | '/tasks/list'
+    | '/utility/404'
+    | '/utility/changelog'
+    | '/utility/empty-state'
+    | '/utility/faqs'
+    | '/utility/roadmap'
   id:
     | '__root__'
-    | '/'
-    | '/about'
-    | '/demo/tanstack-query'
+    | '/_app'
+    | '/onboarding-01'
+    | '/onboarding-02'
+    | '/onboarding-03'
+    | '/onboarding-04'
+    | '/reset-password'
+    | '/signin'
+    | '/signup'
+    | '/_app/calendar'
+    | '/_app/campaigns'
+    | '/_app/inbox'
+    | '/_app/messages'
+    | '/ecommerce/pay'
     | '/example/$exampleId'
+    | '/seed/home'
+    | '/_app/'
     | '/example/'
-    | '/demo/form/address'
-    | '/demo/form/simple'
+    | '/_app/community/feed'
+    | '/_app/community/forum'
+    | '/_app/community/forum-post'
+    | '/_app/community/meetups'
+    | '/_app/community/meetups-post'
+    | '/_app/community/profile'
+    | '/_app/community/users-tabs'
+    | '/_app/community/users-tiles'
+    | '/_app/component/accordion'
+    | '/_app/component/alert'
+    | '/_app/component/avatar'
+    | '/_app/component/badge'
+    | '/_app/component/breadcrumb'
+    | '/_app/component/button'
+    | '/_app/component/dropdown'
+    | '/_app/component/form'
+    | '/_app/component/icons'
+    | '/_app/component/modal'
+    | '/_app/component/pagination'
+    | '/_app/component/tabs'
+    | '/_app/component/tooltip'
+    | '/_app/dashboard/analytics'
+    | '/_app/dashboard/fintech'
+    | '/_app/ecommerce/cart'
+    | '/_app/ecommerce/cart-2'
+    | '/_app/ecommerce/cart-3'
+    | '/_app/ecommerce/customers'
+    | '/_app/ecommerce/invoices'
+    | '/_app/ecommerce/orders'
+    | '/_app/ecommerce/product'
+    | '/_app/ecommerce/shop'
+    | '/_app/ecommerce/shop-2'
+    | '/_app/finance/cards'
+    | '/_app/finance/transaction-details'
+    | '/_app/finance/transactions'
+    | '/_app/job/company-profile'
+    | '/_app/job/job-listing'
+    | '/_app/job/job-post'
+    | '/_app/settings/account'
+    | '/_app/settings/apps'
+    | '/_app/settings/billing'
+    | '/_app/settings/feedback'
+    | '/_app/settings/notifications'
+    | '/_app/settings/plans'
+    | '/_app/tasks/kanban'
+    | '/_app/tasks/list'
+    | '/_app/utility/404'
+    | '/_app/utility/changelog'
+    | '/_app/utility/empty-state'
+    | '/_app/utility/faqs'
+    | '/_app/utility/roadmap'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
+  Onboarding01Route: typeof Onboarding01Route
+  Onboarding02Route: typeof Onboarding02Route
+  Onboarding03Route: typeof Onboarding03Route
+  Onboarding04Route: typeof Onboarding04Route
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  SigninRoute: typeof SigninRoute
+  SignupRoute: typeof SignupRoute
+  EcommercePayRoute: typeof EcommercePayRoute
   ExampleExampleIdRoute: typeof ExampleExampleIdRoute
+  SeedHomeRoute: typeof SeedHomeRoute
   ExampleIndexRoute: typeof ExampleIndexRoute
-  DemoFormAddressRoute: typeof DemoFormAddressRoute
-  DemoFormSimpleRoute: typeof DemoFormSimpleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
+    '/signin': {
+      id: '/signin'
+      path: '/signin'
+      fullPath: '/signin'
+      preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding-04': {
+      id: '/onboarding-04'
+      path: '/onboarding-04'
+      fullPath: '/onboarding-04'
+      preLoaderRoute: typeof Onboarding04RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding-03': {
+      id: '/onboarding-03'
+      path: '/onboarding-03'
+      fullPath: '/onboarding-03'
+      preLoaderRoute: typeof Onboarding03RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding-02': {
+      id: '/onboarding-02'
+      path: '/onboarding-02'
+      fullPath: '/onboarding-02'
+      preLoaderRoute: typeof Onboarding02RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding-01': {
+      id: '/onboarding-01'
+      path: '/onboarding-01'
+      fullPath: '/onboarding-01'
+      preLoaderRoute: typeof Onboarding01RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app': {
+      id: '/_app'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof AppRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/example/': {
@@ -144,6 +920,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/seed/home': {
+      id: '/seed/home'
+      path: '/seed/home'
+      fullPath: '/seed/home'
+      preLoaderRoute: typeof SeedHomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/example/$exampleId': {
       id: '/example/$exampleId'
       path: '/example/$exampleId'
@@ -151,38 +941,536 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExampleExampleIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/tanstack-query': {
-      id: '/demo/tanstack-query'
-      path: '/demo/tanstack-query'
-      fullPath: '/demo/tanstack-query'
-      preLoaderRoute: typeof DemoTanstackQueryRouteImport
+    '/ecommerce/pay': {
+      id: '/ecommerce/pay'
+      path: '/ecommerce/pay'
+      fullPath: '/ecommerce/pay'
+      preLoaderRoute: typeof EcommercePayRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/form/simple': {
-      id: '/demo/form/simple'
-      path: '/demo/form/simple'
-      fullPath: '/demo/form/simple'
-      preLoaderRoute: typeof DemoFormSimpleRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_app/messages': {
+      id: '/_app/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof AppMessagesRouteImport
+      parentRoute: typeof AppRouteRoute
     }
-    '/demo/form/address': {
-      id: '/demo/form/address'
-      path: '/demo/form/address'
-      fullPath: '/demo/form/address'
-      preLoaderRoute: typeof DemoFormAddressRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_app/inbox': {
+      id: '/_app/inbox'
+      path: '/inbox'
+      fullPath: '/inbox'
+      preLoaderRoute: typeof AppInboxRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/campaigns': {
+      id: '/_app/campaigns'
+      path: '/campaigns'
+      fullPath: '/campaigns'
+      preLoaderRoute: typeof AppCampaignsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/calendar': {
+      id: '/_app/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof AppCalendarRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/utility/roadmap': {
+      id: '/_app/utility/roadmap'
+      path: '/utility/roadmap'
+      fullPath: '/utility/roadmap'
+      preLoaderRoute: typeof AppUtilityRoadmapRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/utility/faqs': {
+      id: '/_app/utility/faqs'
+      path: '/utility/faqs'
+      fullPath: '/utility/faqs'
+      preLoaderRoute: typeof AppUtilityFaqsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/utility/empty-state': {
+      id: '/_app/utility/empty-state'
+      path: '/utility/empty-state'
+      fullPath: '/utility/empty-state'
+      preLoaderRoute: typeof AppUtilityEmptyStateRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/utility/changelog': {
+      id: '/_app/utility/changelog'
+      path: '/utility/changelog'
+      fullPath: '/utility/changelog'
+      preLoaderRoute: typeof AppUtilityChangelogRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/utility/404': {
+      id: '/_app/utility/404'
+      path: '/utility/404'
+      fullPath: '/utility/404'
+      preLoaderRoute: typeof AppUtility404RouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/tasks/list': {
+      id: '/_app/tasks/list'
+      path: '/tasks/list'
+      fullPath: '/tasks/list'
+      preLoaderRoute: typeof AppTasksListRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/tasks/kanban': {
+      id: '/_app/tasks/kanban'
+      path: '/tasks/kanban'
+      fullPath: '/tasks/kanban'
+      preLoaderRoute: typeof AppTasksKanbanRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/settings/plans': {
+      id: '/_app/settings/plans'
+      path: '/settings/plans'
+      fullPath: '/settings/plans'
+      preLoaderRoute: typeof AppSettingsPlansRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/settings/notifications': {
+      id: '/_app/settings/notifications'
+      path: '/settings/notifications'
+      fullPath: '/settings/notifications'
+      preLoaderRoute: typeof AppSettingsNotificationsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/settings/feedback': {
+      id: '/_app/settings/feedback'
+      path: '/settings/feedback'
+      fullPath: '/settings/feedback'
+      preLoaderRoute: typeof AppSettingsFeedbackRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/settings/billing': {
+      id: '/_app/settings/billing'
+      path: '/settings/billing'
+      fullPath: '/settings/billing'
+      preLoaderRoute: typeof AppSettingsBillingRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/settings/apps': {
+      id: '/_app/settings/apps'
+      path: '/settings/apps'
+      fullPath: '/settings/apps'
+      preLoaderRoute: typeof AppSettingsAppsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/settings/account': {
+      id: '/_app/settings/account'
+      path: '/settings/account'
+      fullPath: '/settings/account'
+      preLoaderRoute: typeof AppSettingsAccountRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/job/job-post': {
+      id: '/_app/job/job-post'
+      path: '/job/job-post'
+      fullPath: '/job/job-post'
+      preLoaderRoute: typeof AppJobJobPostRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/job/job-listing': {
+      id: '/_app/job/job-listing'
+      path: '/job/job-listing'
+      fullPath: '/job/job-listing'
+      preLoaderRoute: typeof AppJobJobListingRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/job/company-profile': {
+      id: '/_app/job/company-profile'
+      path: '/job/company-profile'
+      fullPath: '/job/company-profile'
+      preLoaderRoute: typeof AppJobCompanyProfileRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/finance/transactions': {
+      id: '/_app/finance/transactions'
+      path: '/finance/transactions'
+      fullPath: '/finance/transactions'
+      preLoaderRoute: typeof AppFinanceTransactionsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/finance/transaction-details': {
+      id: '/_app/finance/transaction-details'
+      path: '/finance/transaction-details'
+      fullPath: '/finance/transaction-details'
+      preLoaderRoute: typeof AppFinanceTransactionDetailsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/finance/cards': {
+      id: '/_app/finance/cards'
+      path: '/finance/cards'
+      fullPath: '/finance/cards'
+      preLoaderRoute: typeof AppFinanceCardsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/shop-2': {
+      id: '/_app/ecommerce/shop-2'
+      path: '/ecommerce/shop-2'
+      fullPath: '/ecommerce/shop-2'
+      preLoaderRoute: typeof AppEcommerceShop2RouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/shop': {
+      id: '/_app/ecommerce/shop'
+      path: '/ecommerce/shop'
+      fullPath: '/ecommerce/shop'
+      preLoaderRoute: typeof AppEcommerceShopRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/product': {
+      id: '/_app/ecommerce/product'
+      path: '/ecommerce/product'
+      fullPath: '/ecommerce/product'
+      preLoaderRoute: typeof AppEcommerceProductRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/orders': {
+      id: '/_app/ecommerce/orders'
+      path: '/ecommerce/orders'
+      fullPath: '/ecommerce/orders'
+      preLoaderRoute: typeof AppEcommerceOrdersRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/invoices': {
+      id: '/_app/ecommerce/invoices'
+      path: '/ecommerce/invoices'
+      fullPath: '/ecommerce/invoices'
+      preLoaderRoute: typeof AppEcommerceInvoicesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/customers': {
+      id: '/_app/ecommerce/customers'
+      path: '/ecommerce/customers'
+      fullPath: '/ecommerce/customers'
+      preLoaderRoute: typeof AppEcommerceCustomersRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/cart-3': {
+      id: '/_app/ecommerce/cart-3'
+      path: '/ecommerce/cart-3'
+      fullPath: '/ecommerce/cart-3'
+      preLoaderRoute: typeof AppEcommerceCart3RouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/cart-2': {
+      id: '/_app/ecommerce/cart-2'
+      path: '/ecommerce/cart-2'
+      fullPath: '/ecommerce/cart-2'
+      preLoaderRoute: typeof AppEcommerceCart2RouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/ecommerce/cart': {
+      id: '/_app/ecommerce/cart'
+      path: '/ecommerce/cart'
+      fullPath: '/ecommerce/cart'
+      preLoaderRoute: typeof AppEcommerceCartRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/dashboard/fintech': {
+      id: '/_app/dashboard/fintech'
+      path: '/dashboard/fintech'
+      fullPath: '/dashboard/fintech'
+      preLoaderRoute: typeof AppDashboardFintechRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/dashboard/analytics': {
+      id: '/_app/dashboard/analytics'
+      path: '/dashboard/analytics'
+      fullPath: '/dashboard/analytics'
+      preLoaderRoute: typeof AppDashboardAnalyticsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/tooltip': {
+      id: '/_app/component/tooltip'
+      path: '/component/tooltip'
+      fullPath: '/component/tooltip'
+      preLoaderRoute: typeof AppComponentTooltipRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/tabs': {
+      id: '/_app/component/tabs'
+      path: '/component/tabs'
+      fullPath: '/component/tabs'
+      preLoaderRoute: typeof AppComponentTabsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/pagination': {
+      id: '/_app/component/pagination'
+      path: '/component/pagination'
+      fullPath: '/component/pagination'
+      preLoaderRoute: typeof AppComponentPaginationRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/modal': {
+      id: '/_app/component/modal'
+      path: '/component/modal'
+      fullPath: '/component/modal'
+      preLoaderRoute: typeof AppComponentModalRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/icons': {
+      id: '/_app/component/icons'
+      path: '/component/icons'
+      fullPath: '/component/icons'
+      preLoaderRoute: typeof AppComponentIconsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/form': {
+      id: '/_app/component/form'
+      path: '/component/form'
+      fullPath: '/component/form'
+      preLoaderRoute: typeof AppComponentFormRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/dropdown': {
+      id: '/_app/component/dropdown'
+      path: '/component/dropdown'
+      fullPath: '/component/dropdown'
+      preLoaderRoute: typeof AppComponentDropdownRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/button': {
+      id: '/_app/component/button'
+      path: '/component/button'
+      fullPath: '/component/button'
+      preLoaderRoute: typeof AppComponentButtonRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/breadcrumb': {
+      id: '/_app/component/breadcrumb'
+      path: '/component/breadcrumb'
+      fullPath: '/component/breadcrumb'
+      preLoaderRoute: typeof AppComponentBreadcrumbRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/badge': {
+      id: '/_app/component/badge'
+      path: '/component/badge'
+      fullPath: '/component/badge'
+      preLoaderRoute: typeof AppComponentBadgeRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/avatar': {
+      id: '/_app/component/avatar'
+      path: '/component/avatar'
+      fullPath: '/component/avatar'
+      preLoaderRoute: typeof AppComponentAvatarRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/alert': {
+      id: '/_app/component/alert'
+      path: '/component/alert'
+      fullPath: '/component/alert'
+      preLoaderRoute: typeof AppComponentAlertRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/component/accordion': {
+      id: '/_app/component/accordion'
+      path: '/component/accordion'
+      fullPath: '/component/accordion'
+      preLoaderRoute: typeof AppComponentAccordionRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/users-tiles': {
+      id: '/_app/community/users-tiles'
+      path: '/community/users-tiles'
+      fullPath: '/community/users-tiles'
+      preLoaderRoute: typeof AppCommunityUsersTilesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/users-tabs': {
+      id: '/_app/community/users-tabs'
+      path: '/community/users-tabs'
+      fullPath: '/community/users-tabs'
+      preLoaderRoute: typeof AppCommunityUsersTabsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/profile': {
+      id: '/_app/community/profile'
+      path: '/community/profile'
+      fullPath: '/community/profile'
+      preLoaderRoute: typeof AppCommunityProfileRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/meetups-post': {
+      id: '/_app/community/meetups-post'
+      path: '/community/meetups-post'
+      fullPath: '/community/meetups-post'
+      preLoaderRoute: typeof AppCommunityMeetupsPostRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/meetups': {
+      id: '/_app/community/meetups'
+      path: '/community/meetups'
+      fullPath: '/community/meetups'
+      preLoaderRoute: typeof AppCommunityMeetupsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/forum-post': {
+      id: '/_app/community/forum-post'
+      path: '/community/forum-post'
+      fullPath: '/community/forum-post'
+      preLoaderRoute: typeof AppCommunityForumPostRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/forum': {
+      id: '/_app/community/forum'
+      path: '/community/forum'
+      fullPath: '/community/forum'
+      preLoaderRoute: typeof AppCommunityForumRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/community/feed': {
+      id: '/_app/community/feed'
+      path: '/community/feed'
+      fullPath: '/community/feed'
+      preLoaderRoute: typeof AppCommunityFeedRouteImport
+      parentRoute: typeof AppRouteRoute
     }
   }
 }
 
+interface AppRouteRouteChildren {
+  AppCalendarRoute: typeof AppCalendarRoute
+  AppCampaignsRoute: typeof AppCampaignsRoute
+  AppInboxRoute: typeof AppInboxRoute
+  AppMessagesRoute: typeof AppMessagesRoute
+  AppIndexRoute: typeof AppIndexRoute
+  AppCommunityFeedRoute: typeof AppCommunityFeedRoute
+  AppCommunityForumRoute: typeof AppCommunityForumRoute
+  AppCommunityForumPostRoute: typeof AppCommunityForumPostRoute
+  AppCommunityMeetupsRoute: typeof AppCommunityMeetupsRoute
+  AppCommunityMeetupsPostRoute: typeof AppCommunityMeetupsPostRoute
+  AppCommunityProfileRoute: typeof AppCommunityProfileRoute
+  AppCommunityUsersTabsRoute: typeof AppCommunityUsersTabsRoute
+  AppCommunityUsersTilesRoute: typeof AppCommunityUsersTilesRoute
+  AppComponentAccordionRoute: typeof AppComponentAccordionRoute
+  AppComponentAlertRoute: typeof AppComponentAlertRoute
+  AppComponentAvatarRoute: typeof AppComponentAvatarRoute
+  AppComponentBadgeRoute: typeof AppComponentBadgeRoute
+  AppComponentBreadcrumbRoute: typeof AppComponentBreadcrumbRoute
+  AppComponentButtonRoute: typeof AppComponentButtonRoute
+  AppComponentDropdownRoute: typeof AppComponentDropdownRoute
+  AppComponentFormRoute: typeof AppComponentFormRoute
+  AppComponentIconsRoute: typeof AppComponentIconsRoute
+  AppComponentModalRoute: typeof AppComponentModalRoute
+  AppComponentPaginationRoute: typeof AppComponentPaginationRoute
+  AppComponentTabsRoute: typeof AppComponentTabsRoute
+  AppComponentTooltipRoute: typeof AppComponentTooltipRoute
+  AppDashboardAnalyticsRoute: typeof AppDashboardAnalyticsRoute
+  AppDashboardFintechRoute: typeof AppDashboardFintechRoute
+  AppEcommerceCartRoute: typeof AppEcommerceCartRoute
+  AppEcommerceCart2Route: typeof AppEcommerceCart2Route
+  AppEcommerceCart3Route: typeof AppEcommerceCart3Route
+  AppEcommerceCustomersRoute: typeof AppEcommerceCustomersRoute
+  AppEcommerceInvoicesRoute: typeof AppEcommerceInvoicesRoute
+  AppEcommerceOrdersRoute: typeof AppEcommerceOrdersRoute
+  AppEcommerceProductRoute: typeof AppEcommerceProductRoute
+  AppEcommerceShopRoute: typeof AppEcommerceShopRoute
+  AppEcommerceShop2Route: typeof AppEcommerceShop2Route
+  AppFinanceCardsRoute: typeof AppFinanceCardsRoute
+  AppFinanceTransactionDetailsRoute: typeof AppFinanceTransactionDetailsRoute
+  AppFinanceTransactionsRoute: typeof AppFinanceTransactionsRoute
+  AppJobCompanyProfileRoute: typeof AppJobCompanyProfileRoute
+  AppJobJobListingRoute: typeof AppJobJobListingRoute
+  AppJobJobPostRoute: typeof AppJobJobPostRoute
+  AppSettingsAccountRoute: typeof AppSettingsAccountRoute
+  AppSettingsAppsRoute: typeof AppSettingsAppsRoute
+  AppSettingsBillingRoute: typeof AppSettingsBillingRoute
+  AppSettingsFeedbackRoute: typeof AppSettingsFeedbackRoute
+  AppSettingsNotificationsRoute: typeof AppSettingsNotificationsRoute
+  AppSettingsPlansRoute: typeof AppSettingsPlansRoute
+  AppTasksKanbanRoute: typeof AppTasksKanbanRoute
+  AppTasksListRoute: typeof AppTasksListRoute
+  AppUtility404Route: typeof AppUtility404Route
+  AppUtilityChangelogRoute: typeof AppUtilityChangelogRoute
+  AppUtilityEmptyStateRoute: typeof AppUtilityEmptyStateRoute
+  AppUtilityFaqsRoute: typeof AppUtilityFaqsRoute
+  AppUtilityRoadmapRoute: typeof AppUtilityRoadmapRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppCalendarRoute: AppCalendarRoute,
+  AppCampaignsRoute: AppCampaignsRoute,
+  AppInboxRoute: AppInboxRoute,
+  AppMessagesRoute: AppMessagesRoute,
+  AppIndexRoute: AppIndexRoute,
+  AppCommunityFeedRoute: AppCommunityFeedRoute,
+  AppCommunityForumRoute: AppCommunityForumRoute,
+  AppCommunityForumPostRoute: AppCommunityForumPostRoute,
+  AppCommunityMeetupsRoute: AppCommunityMeetupsRoute,
+  AppCommunityMeetupsPostRoute: AppCommunityMeetupsPostRoute,
+  AppCommunityProfileRoute: AppCommunityProfileRoute,
+  AppCommunityUsersTabsRoute: AppCommunityUsersTabsRoute,
+  AppCommunityUsersTilesRoute: AppCommunityUsersTilesRoute,
+  AppComponentAccordionRoute: AppComponentAccordionRoute,
+  AppComponentAlertRoute: AppComponentAlertRoute,
+  AppComponentAvatarRoute: AppComponentAvatarRoute,
+  AppComponentBadgeRoute: AppComponentBadgeRoute,
+  AppComponentBreadcrumbRoute: AppComponentBreadcrumbRoute,
+  AppComponentButtonRoute: AppComponentButtonRoute,
+  AppComponentDropdownRoute: AppComponentDropdownRoute,
+  AppComponentFormRoute: AppComponentFormRoute,
+  AppComponentIconsRoute: AppComponentIconsRoute,
+  AppComponentModalRoute: AppComponentModalRoute,
+  AppComponentPaginationRoute: AppComponentPaginationRoute,
+  AppComponentTabsRoute: AppComponentTabsRoute,
+  AppComponentTooltipRoute: AppComponentTooltipRoute,
+  AppDashboardAnalyticsRoute: AppDashboardAnalyticsRoute,
+  AppDashboardFintechRoute: AppDashboardFintechRoute,
+  AppEcommerceCartRoute: AppEcommerceCartRoute,
+  AppEcommerceCart2Route: AppEcommerceCart2Route,
+  AppEcommerceCart3Route: AppEcommerceCart3Route,
+  AppEcommerceCustomersRoute: AppEcommerceCustomersRoute,
+  AppEcommerceInvoicesRoute: AppEcommerceInvoicesRoute,
+  AppEcommerceOrdersRoute: AppEcommerceOrdersRoute,
+  AppEcommerceProductRoute: AppEcommerceProductRoute,
+  AppEcommerceShopRoute: AppEcommerceShopRoute,
+  AppEcommerceShop2Route: AppEcommerceShop2Route,
+  AppFinanceCardsRoute: AppFinanceCardsRoute,
+  AppFinanceTransactionDetailsRoute: AppFinanceTransactionDetailsRoute,
+  AppFinanceTransactionsRoute: AppFinanceTransactionsRoute,
+  AppJobCompanyProfileRoute: AppJobCompanyProfileRoute,
+  AppJobJobListingRoute: AppJobJobListingRoute,
+  AppJobJobPostRoute: AppJobJobPostRoute,
+  AppSettingsAccountRoute: AppSettingsAccountRoute,
+  AppSettingsAppsRoute: AppSettingsAppsRoute,
+  AppSettingsBillingRoute: AppSettingsBillingRoute,
+  AppSettingsFeedbackRoute: AppSettingsFeedbackRoute,
+  AppSettingsNotificationsRoute: AppSettingsNotificationsRoute,
+  AppSettingsPlansRoute: AppSettingsPlansRoute,
+  AppTasksKanbanRoute: AppTasksKanbanRoute,
+  AppTasksListRoute: AppTasksListRoute,
+  AppUtility404Route: AppUtility404Route,
+  AppUtilityChangelogRoute: AppUtilityChangelogRoute,
+  AppUtilityEmptyStateRoute: AppUtilityEmptyStateRoute,
+  AppUtilityFaqsRoute: AppUtilityFaqsRoute,
+  AppUtilityRoadmapRoute: AppUtilityRoadmapRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  DemoTanstackQueryRoute: DemoTanstackQueryRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
+  Onboarding01Route: Onboarding01Route,
+  Onboarding02Route: Onboarding02Route,
+  Onboarding03Route: Onboarding03Route,
+  Onboarding04Route: Onboarding04Route,
+  ResetPasswordRoute: ResetPasswordRoute,
+  SigninRoute: SigninRoute,
+  SignupRoute: SignupRoute,
+  EcommercePayRoute: EcommercePayRoute,
   ExampleExampleIdRoute: ExampleExampleIdRoute,
+  SeedHomeRoute: SeedHomeRoute,
   ExampleIndexRoute: ExampleIndexRoute,
-  DemoFormAddressRoute: DemoFormAddressRoute,
-  DemoFormSimpleRoute: DemoFormSimpleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

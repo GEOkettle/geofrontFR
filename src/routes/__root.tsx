@@ -12,8 +12,6 @@ import { THEME_INIT_SCRIPT } from '#/app/config/theme'
 import { publicEnv } from '#/app/config/public-env'
 import AppProvider from '#/app/providers/AppProvider'
 import TanStackQueryDevtools from '#/app/providers/query-devtools'
-import Footer from '#/components/layout/Footer'
-import Header from '#/components/layout/Header'
 
 import appCss from '#/app/styles/global.css?url'
 
@@ -42,6 +40,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
+  notFoundComponent: () => (
+    <main className="flex min-h-screen items-center justify-center p-6">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Not Found</p>
+    </main>
+  ),
   shellComponent: RootDocument,
 })
 
@@ -52,11 +55,12 @@ function RootDocument({ children }: { children: ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]">
+      <body
+        suppressHydrationWarning
+        className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]"
+      >
         <AppProvider>
-          <Header />
           {children}
-          <Footer />
           <TanStackDevtools
             config={{
               position: 'bottom-right',

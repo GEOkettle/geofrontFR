@@ -1,5 +1,10 @@
 # geofrontFR
 
+## Language
+
+- [English](./README.md)
+- [한국어](./README_KOR.md)
+
 geofrontFR is a frontend application architecture standard built on top of React, TypeScript, Vite, and TanStack Start.
 
 Its goal is not just to assemble libraries, but to define a consistent application framework for:
@@ -73,6 +78,24 @@ The framework prioritizes architecture clarity over convenience shortcuts.
 - Separate primitive UI, common UI, entity UI, and feature UI clearly.
 - Do not introduce generic folders with vague responsibilities.
 - Make the source of truth explicit for every piece of state.
+
+---
+
+## Asset Placement Rule
+
+Use only these asset locations by default:
+
+- `src/features/seed/images`: assets that belong to the imported `seed` UI
+- `src/shared/assets`: shared application assets
+- `public`: files that must be served directly by URL without import bundling
+
+Rules:
+
+- Do not introduce `src/assets` as a new default bucket.
+- Prefer `src/shared/assets` for non-seed assets unless there is a strong reason to place them elsewhere.
+- Keep `seed` assets inside `src/features/seed/images` so ownership and source boundaries remain explicit.
+- Use `public` only for files that should remain direct public files such as favicons, robots files, or other static passthrough assets.
+
 
 ---
 
@@ -1439,8 +1462,35 @@ When unsure where code belongs, ask in this order:
 
 The first clear answer usually determines the correct directory.
 
-```
+---
 
-원하면 내가 다음 단계로 이 README를 기준으로 **실제 starter 템플릿 디렉토리 + 빈 파일 목록**까지 바로 뽑아주겠다.
-```
-```
+
+## Seed Usage Policy
+
+Use `seed` as a pragmatic UI inventory, not as the primary source of product architecture.
+
+Rules:
+
+- For new requirements, check `seed` first for reusable screens, layout blocks, and presentational components.
+- If a suitable `seed` asset exists, reuse it with the smallest reasonable modification.
+- If `seed` does not provide the needed UI, build it with the project-standard shared approach such as `components/ui`, `shadcn/ui`, or other approved common primitives.
+- If newly built UI starts repeating across multiple features, promote it into reusable shared UI and reduce direct `seed` dependence over time.
+- Put real product workflows and domain behavior in `features/<domain>`, not in `seed`.
+- Treat `seed` as a fast-start UI inventory, `components/ui` as validated shared UI, and `features/*` as real application code.
+- Do not spend roadmap time fully rewriting `seed` into native geofrontFR structure unless repeated product work proves that the migration cost will be recovered.
+- If a `seed` page should be preserved but removed from the active router tree, disable the route entry by moving it under a `-` prefixed file or folder inside `src/routes`, such as `src/routes/-legacy/...`.
+- Prefer disabling only the route entry file while keeping the underlying page/component implementation intact, so archived template screens remain easy to restore later.
+
+---
+
+## License
+
+All files under `src/features/seed` are owned by [Cruip](https://cruip.com/).
+
+- Do not redistribute those assets without permission.
+- Use them only under a valid license purchased from Cruip.
+
+All other source code in this repository is the asset of geo lucason.
+
+- Personal and commercial use is permitted.
+- The source reference [https://github.com/GEOkettle/tanstackseed](https://github.com/GEOkettle/tanstackseed) must remain credited in derivative or reused source distributions.

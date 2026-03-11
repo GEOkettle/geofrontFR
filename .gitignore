@@ -5,7 +5,6 @@ dist-ssr
 *.local
 .env
 .env.development
-temp.md
 .nitro
 .tanstack
 .wrangler
@@ -13,3 +12,5 @@ temp.md
 .vinxi
 __unconfig*
 todos.json
+src/features/seed
+temp.md

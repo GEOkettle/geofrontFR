@@ -1,5 +1,10 @@
 # geofrontFR
 
+## Language
+
+- [English](./README.md)
+- [한국어](./README_KOR.md)
+
 geofrontFR는 React, TypeScript, Vite, TanStack Start를 기반으로 한 프론트엔드 애플리케이션 아키텍처 표준이다.
 
 이 프로젝트의 목표는 단순히 라이브러리를 조합하는 것이 아니라, 아래 항목들에 대해 일관된 프레임워크 규약을 정의하는 것이다.
@@ -75,6 +80,24 @@ geofrontFR는 라이브러리 모음이 아니다.
 - primitive UI, common UI, entity UI, feature UI를 명확히 분리한다.
 - 역할이 모호한 범용 폴더를 만들지 않는다.
 - 모든 상태에 대해 source of truth를 명확히 정한다.
+
+---
+
+## Asset Placement Rule
+
+기본 자산 위치는 아래 세 곳만 사용한다.
+
+- `src/features/seed/images`: 이식된 `seed` UI에 속하는 자산
+- `src/shared/assets`: 애플리케이션 공용 자산
+- `public`: import 번들링 없이 URL로 직접 서빙되어야 하는 파일
+
+규칙:
+
+- 기본 자산 버킷으로 `src/assets`를 새로 만들지 않는다.
+- `seed`가 아닌 자산은 특별한 이유가 없으면 `src/shared/assets`를 우선 사용한다.
+- `seed` 자산은 `src/features/seed/images` 안에 유지해서 소유권과 출처 경계를 명확히 한다.
+- `public`은 favicon, robots 파일, 기타 정적 passthrough 파일처럼 직접 공개되어야 하는 자산에만 사용한다.
+
 
 ---
 
@@ -1438,3 +1461,36 @@ geofrontFR는 명시적인 경계를 중심으로 설계된다.
 8. 테스트 전용 코드인가?
 
 가장 먼저 명확하게 해당하는 답이, 대체로 올바른 디렉터리를 결정한다.
+
+---
+
+
+## Seed Usage Policy
+
+`seed`는 제품 아키텍처의 기준점이 아니라, 빠르게 활용할 수 있는 UI 자산 인벤토리로 취급한다.
+
+규칙:
+
+- 새 요구사항이 들어오면 먼저 `seed`에서 재사용 가능한 화면, 레이아웃 블록, 표현용 컴포넌트를 찾는다.
+- 적절한 `seed` 자산이 있으면 가능한 최소 수정만 해서 재사용한다.
+- `seed`에 필요한 UI가 없으면 `components/ui`, `shadcn/ui`, 또는 현재 프로젝트의 공용 UI 방식으로 새로 만든다.
+- 새로 만든 UI가 여러 feature에서 반복되기 시작하면 공용 컴포넌트로 승격하고 `seed` 직접 의존은 점차 줄인다.
+- 실제 제품 워크플로우와 도메인 동작은 `features/<domain>`에 쌓고, `seed`에는 넣지 않는다.
+- `seed`는 빠른 시작용 UI inventory, `components/ui`는 검증된 공용 UI, `features/*`는 실제 제품 코드로 본다.
+- 반복되는 제품 요구가 충분히 쌓여서 리팩터링 비용 회수가 명확해지기 전까지는, `seed`를 geofrontFR 구조로 전면 재작성하는 작업을 우선순위로 잡지 않는다.
+- `seed` 페이지를 보관만 하고 현재 라우터 트리에서는 빼고 싶다면, route entry 파일을 `src/routes/-legacy/...` 같은 `-` prefix 파일/폴더 아래로 옮겨 비활성화한다.
+- 이 경우 실제 페이지/컴포넌트 구현은 유지하고 route entry만 비활성화하는 방식을 우선해서, 보관한 템플릿 화면을 나중에 쉽게 다시 붙일 수 있게 한다.
+
+---
+
+## License
+
+`src/features/seed` 아래의 모든 파일에 대한 권리는 [Cruip](https://cruip.com/)에 있다.
+
+- 해당 자산은 무단 재배포를 금한다.
+- Cruip에서 정식 라이선스를 구매한 조건에서만 사용해야 한다.
+
+이 저장소의 그 외 모든 소스 코드는 geo lucason의 자산이다.
+
+- 개인적 이용과 상업적 이용을 허용한다.
+- 파생 소스 또는 재사용 소스에는 출처로 [https://github.com/GEOkettle/tanstackseed](https://github.com/GEOkettle/tanstackseed)를 남겨야 한다.
