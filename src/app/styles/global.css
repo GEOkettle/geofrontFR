@@ -1,9 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback');
-
 @import 'tailwindcss';
 /* seed .gitignore로 tailwind auto-scan목록에서 빠짐 manual import */
 @source '../../features/seed';
 @import './additional-styles/utility-patterns.css' layer(components);
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../../shared/assets/font/Pretendard/Pretendard-Regular.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../../shared/assets/font/Pretendard/Pretendard-Medium.woff2')
+    format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../../shared/assets/font/Pretendard/Pretendard-SemiBold.woff2')
+    format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../../shared/assets/font/Pretendard/Pretendard-Bold.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @plugin "@tailwindcss/forms" {
   strategy: base;
@@ -87,7 +121,8 @@
   --color-yellow-900: #4f3d0e;
   --color-yellow-950: #342809;
 
-  --font-inter: 'Inter', 'sans-serif';
+  --font-sans: 'Pretendard', 'Inter', 'sans-serif';
+  --font-inter: 'Pretendard', 'Inter', 'sans-serif';
 
   --text-xs: 0.75rem;
   --text-xs--line-height: 1.5;
