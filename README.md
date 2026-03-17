@@ -1426,10 +1426,29 @@ Use **Playwright** for:
 
 ### Rules
 
-- colocate test files near source when useful
-- keep shared test helpers in `test/`\*
+- colocate Vitest unit/component tests near source when useful
+- keep shared test helpers in `src/test/`\*
+- keep Playwright E2E scenarios under `src/test/e2e`
 - avoid over-mocking framework boundaries unless necessary
 - prioritize behavior over implementation details
+
+### Current baseline
+
+- Vitest samples:
+  - `src/shared/api/normalizeApiError.test.ts`
+  - `src/features/auth/utils/ensureCurrentUser.test.ts`
+  - `src/features/seed/pages/Signin.test.tsx`
+- Playwright smoke samples:
+  - `src/test/e2e/auth-guest-pages.spec.ts`
+- quality scripts:
+  - `npm run format`
+  - `npm run format:check`
+  - `npm run lint`
+  - `npm run lint:fix`
+  - `npm run test`
+  - `npm run test:e2e`
+- git hooks:
+  - Husky + lint-staged run Prettier and ESLint for staged files on `pre-commit`
 
 ---
 

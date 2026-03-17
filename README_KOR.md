@@ -1428,10 +1428,29 @@ UI는 네 가지 범주로 나눈다.
 
 ### 규칙
 
-- 필요하면 테스트 파일은 소스 근처에 배치한다
-- 공통 테스트 헬퍼는 `test/`\*에 둔다
+- Vitest 단위/컴포넌트 테스트는 필요하면 소스 근처에 배치한다
+- 공통 테스트 헬퍼는 `src/test/`\*에 둔다
+- Playwright E2E 시나리오는 `src/test/e2e` 아래에 둔다
 - 필요 이상으로 프레임워크 경계를 과하게 mocking하지 않는다
 - 구현 세부보다 동작을 검증한다
+
+### 현재 기준선
+
+- Vitest 샘플:
+  - `src/shared/api/normalizeApiError.test.ts`
+  - `src/features/auth/utils/ensureCurrentUser.test.ts`
+  - `src/features/seed/pages/Signin.test.tsx`
+- Playwright smoke 샘플:
+  - `src/test/e2e/auth-guest-pages.spec.ts`
+- 품질 스크립트:
+  - `npm run format`
+  - `npm run format:check`
+  - `npm run lint`
+  - `npm run lint:fix`
+  - `npm run test`
+  - `npm run test:e2e`
+- git hook:
+  - Husky + lint-staged가 `pre-commit`에서 staged 파일 기준 Prettier와 ESLint를 실행한다
 
 ---
 
