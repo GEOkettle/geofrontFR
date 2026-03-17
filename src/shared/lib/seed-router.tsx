@@ -1,10 +1,6 @@
-// 
-import {
-  Link as TanStackLink,
-  useRouterState
-  
-} from '@tanstack/react-router'
-import type {LinkProps as TanStackLinkProps} from '@tanstack/react-router';
+//
+import { Link as TanStackLink, useRouterState } from '@tanstack/react-router'
+import type { LinkProps as TanStackLinkProps } from '@tanstack/react-router'
 
 type SimpleLinkProps = Omit<TanStackLinkProps, 'params' | 'search'> & {
   to: string
@@ -25,12 +21,7 @@ export function useLocation() {
   })
 }
 
-export function NavLink({
-  to,
-  end = false,
-  className,
-  ...rest
-}: NavLinkProps) {
+export function NavLink({ to, end = false, className, ...rest }: NavLinkProps) {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   })

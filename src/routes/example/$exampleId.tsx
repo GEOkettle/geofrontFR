@@ -5,7 +5,9 @@ import { exampleDetailQueryOptions } from '#/features/example/hooks/exampleQueri
 
 export const Route = createFileRoute('/example/$exampleId')({
   loader: ({ context, params }) =>
-    context.queryClient.ensureQueryData(exampleDetailQueryOptions(params.exampleId)),
+    context.queryClient.ensureQueryData(
+      exampleDetailQueryOptions(params.exampleId),
+    ),
   component: ExampleDetailRoute,
 })
 

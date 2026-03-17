@@ -1,0 +1,24 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: geofrontfr-redis-prod
+    restart: always
+    ports:
+      - '${REDIS_PORT:-6379}:6379'
+    command:
+      - redis-server
+      - --appendonly
+      - 'yes'
+      - --requirepass
+      - '${REDIS_PASSWORD}'
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    volumes:
+      - geofrontfr_redis_prod_data:/data
+
+volumes:
+  geofrontfr_redis_prod_data:

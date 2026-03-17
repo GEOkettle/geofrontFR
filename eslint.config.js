@@ -15,6 +15,18 @@ export default [
     },
   },
   {
+    files: [
+      'src/routes/**/*.{ts,tsx}',
+      'src/server/**/*.{ts,tsx}',
+      'src/shared/**/*.{ts,tsx}',
+      'src/features/auth/**/*.{ts,tsx}',
+    ],
+    rules: {
+      'no-console': 'warn',
+      'no-debugger': 'error',
+    },
+  },
+  {
     files: ['src/features/seed/**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-unnecessary-condition': 'off',
@@ -22,6 +34,11 @@ export default [
     },
   },
   {
-    ignores: ['eslint.config.js', 'prettier.config.js'],
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      'eslint.config.js',
+      'prettier.config.js',
+    ],
   },
 ]

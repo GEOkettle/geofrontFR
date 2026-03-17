@@ -68,7 +68,8 @@ export function HomePage() {
           </li>
           <li>
             Reusable UI is split between <code>src/components/ui</code>,{' '}
-            <code>src/components/common</code>, and <code>src/components/layout</code>.
+            <code>src/components/common</code>, and{' '}
+            <code>src/components/layout</code>.
           </li>
           <li>
             Demo workflows now live under <code>src/features/demo</code>.

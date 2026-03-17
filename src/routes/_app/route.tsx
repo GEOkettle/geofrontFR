@@ -1,10 +1,29 @@
-import { Outlet, createFileRoute, useRouterState } from '@tanstack/react-router'
+import {
+  Outlet,
+  createFileRoute,
+  redirect,
+  useRouterState,
+} from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
+import { ensureCurrentUser } from '#/features/auth/utils/ensureCurrentUser'
 import Header from '#/features/seed/partials/Header'
 import Sidebar from '#/features/seed/partials/Sidebar'
 
 export const Route = createFileRoute('/_app')({
+  beforeLoad: async ({ context }) => {
+    if (typeof document === 'undefined') {
+      const { requireUser } = await import('#/server/auth/requireUser')
+      await requireUser()
+      return
+    }
+
+    const user = await ensureCurrentUser(context.queryClient)
+
+    if (!user) {
+      throw redirect({ to: '/signin' })
+    }
+  },
   component: MosaicAppShell,
 })
 

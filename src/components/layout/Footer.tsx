@@ -9,9 +9,7 @@ export default function Footer() {
         <p className="m-0 text-sm">
           &copy; {year} Geo lucason. All rights reserved.
         </p>
-        <p className="island-kicker m-0">
-          {publicEnv.VITE_APP_DESCRIPTION}
-        </p>
+        <p className="island-kicker m-0">{publicEnv.VITE_APP_DESCRIPTION}</p>
       </div>
       <div className="mt-4 flex justify-center gap-4">
         <a

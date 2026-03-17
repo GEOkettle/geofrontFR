@@ -52,7 +52,9 @@ export function ExampleListPage() {
               <Select.SelectContent>
                 <Select.SelectItem value="all">All</Select.SelectItem>
                 <Select.SelectItem value="draft">Draft</Select.SelectItem>
-                <Select.SelectItem value="published">Published</Select.SelectItem>
+                <Select.SelectItem value="published">
+                  Published
+                </Select.SelectItem>
                 <Select.SelectItem value="archived">Archived</Select.SelectItem>
               </Select.SelectContent>
             </Select.Select>

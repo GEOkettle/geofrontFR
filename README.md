@@ -46,7 +46,6 @@ This project aims to provide a practical alternative to monolithic meta-framewor
 - Lint: ESLint
 - Format: Prettier
 
-
 ---
 
 ## Core Goal
@@ -81,6 +80,25 @@ The framework prioritizes architecture clarity over convenience shortcuts.
 
 ---
 
+## Server Boundary Rule
+
+geofrontFR uses TanStack Start as an SSR runtime, not as the primary domain backend.
+
+The default server boundary is:
+
+- TanStack Start server: SSR rendering, request-scoped auth resolution, cookie/header reading, private environment access, and minimal server-only orchestration
+- External API server: domain business logic, persistent data access, authentication APIs, and business-oriented mutations/queries
+
+Rules:
+
+- Do not move core domain business logic into the TanStack Start server by default.
+- Do not treat `server/` as a second full backend application.
+- Prefer calling the external API server for business data and mutations.
+- Use the TanStack Start server when SSR requires request-aware logic such as auth resolution, protected route decisions, or request-scoped API forwarding.
+- Keep the SSR layer thin and explicit.
+
+---
+
 ## Asset Placement Rule
 
 Use only these asset locations by default:
@@ -95,7 +113,6 @@ Rules:
 - Prefer `src/shared/assets` for non-seed assets unless there is a strong reason to place them elsewhere.
 - Keep `seed` assets inside `src/features/seed/images` so ownership and source boundaries remain explicit.
 - Use `public` only for files that should remain direct public files such as favicons, robots files, or other static passthrough assets.
-
 
 ---
 
@@ -655,7 +672,7 @@ Rules:
 - keep helpers here when they are specific to the feature
 - do not promote code to `shared/` too early
 
-```
+````
 
 ### `components/`
 
@@ -664,7 +681,7 @@ components/
   ui/
   common/
   layout/
-```
+````
 
 #### `components/ui`
 
@@ -672,18 +689,18 @@ Primitive UI building blocks.
 
 Examples:
 
-* Button
-* Input
-* Select
-* Dialog
-* Table
-* Badge
+- Button
+- Input
+- Select
+- Dialog
+- Table
+- Badge
 
 Rules:
 
-* no feature knowledge
-* no domain knowledge
-* no business workflow logic
+- no feature knowledge
+- no domain knowledge
+- no business workflow logic
 
 #### `components/common`
 
@@ -691,18 +708,18 @@ Shared composed UI components.
 
 Examples:
 
-* PageHeader
-* EmptyState
-* ConfirmDialog
-* SearchBar
-* LoadingSection
-* ErrorFallback
+- PageHeader
+- EmptyState
+- ConfirmDialog
+- SearchBar
+- LoadingSection
+- ErrorFallback
 
 Rules:
 
-* reusable across multiple routes/features
-* may compose primitive UI
-* should remain domain-agnostic
+- reusable across multiple routes/features
+- may compose primitive UI
+- should remain domain-agnostic
 
 #### `components/layout`
 
@@ -710,16 +727,16 @@ Layout and shell components.
 
 Examples:
 
-* AppShell
-* AuthLayout
-* MainLayout
-* SidebarLayout
-* MobileBottomNav
+- AppShell
+- AuthLayout
+- MainLayout
+- SidebarLayout
+- MobileBottomNav
 
 Rules:
 
-* concerned with structure and placement
-* not with feature-specific business behavior
+- concerned with structure and placement
+- not with feature-specific business behavior
 
 ---
 
@@ -753,10 +770,10 @@ Entity-level transformation and interpretation logic.
 
 Examples:
 
-* label mapping
-* normalization
-* display value computation
-* derived domain fields
+- label mapping
+- normalization
+- display value computation
+- derived domain fields
 
 #### `ui/`
 
@@ -764,14 +781,28 @@ Thin entity representation components only.
 
 Examples:
 
-* `UserAvatar`
-* `ExampleStatusBadge`
-* `ExampleSummaryCard`
+- `UserAvatar`
+- `ExampleStatusBadge`
+- `ExampleSummaryCard`
 
 Rules:
 
-* entity UI is allowed only when it is presentation-focused
-* forms, dialogs, mutations, and workflow UI do not belong here
+- entity UI is allowed only when it is presentation-focused
+- forms, dialogs, mutations, and workflow UI do not belong here
+
+### Placement Heuristics: `entities` vs `components` vs `features`
+
+Use these questions when placement feels ambiguous:
+
+- does it primarily represent a domain noun that can be reused across flows? put it in `entities`
+- does it contain a use-case, workflow, mutation, form, search, filter, or route-driven behavior? put it in `features`
+- is it generic UI without domain-specific behavior? put it in `components`
+
+Quick examples:
+
+- `UserAvatar`, `RoleChip`, `AcademyCard` -> `entities`
+- `SigninForm`, `InviteMemberDialog`, `AcademySearchPanel` -> `features`
+- `Dialog`, `EmptyState`, `PageHeader` -> `components`
 
 ---
 
@@ -794,21 +825,21 @@ Shared HTTP infrastructure.
 
 Examples:
 
-* axios instance
-* `get/post/patch/delete` request helpers
-* interceptors
-* request wrapper
-* common error normalization
-* response base types
+- axios instance
+- `get/post/patch/delete` request helpers
+- interceptors
+- request wrapper
+- common error normalization
+- response base types
 
 Rules:
 
-* shared HTTP infrastructure belongs here
-* actual feature endpoint functions do not
-* feature API files should reuse the shared axios client instead of calling `axios.create(...)`
-* shared request helpers may unwrap `response.data`, but payload interpretation still belongs to the feature or entity layer
-* normalize HTTP errors in shared transport infrastructure before feature hooks or UI consume them
-* development-only request/error logging belongs in this layer, not inside feature UI
+- shared HTTP infrastructure belongs here
+- actual feature endpoint functions do not
+- feature API files should reuse the shared axios client instead of calling `axios.create(...)`
+- shared request helpers may unwrap `response.data`, but payload interpretation still belongs to the feature or entity layer
+- normalize HTTP errors in shared transport infrastructure before feature hooks or UI consume them
+- development-only request/error logging belongs in this layer, not inside feature UI
 
 #### `shared/constants`
 
@@ -820,9 +851,9 @@ Generic reusable hooks.
 
 Examples:
 
-* `useDebounce`
-* `useDisclosure`
-* `useMounted`
+- `useDebounce`
+- `useDisclosure`
+- `useMounted`
 
 #### `shared/lib`
 
@@ -830,10 +861,10 @@ Library-oriented setup and adapters.
 
 Examples:
 
-* `cn`
-* dayjs setup
-* formatter adapters
-* zod helpers
+- `cn`
+- dayjs setup
+- formatter adapters
+- zod helpers
 
 #### `shared/schemas`
 
@@ -849,8 +880,8 @@ Generic helper functions.
 
 Rules:
 
-* do not move feature-local helpers here just because they are small
-* move code to `shared/` only when it is truly generic and reusable
+- do not move feature-local helpers here just because they are small
+- move code to `shared/` only when it is truly generic and reusable
 
 ---
 
@@ -870,9 +901,9 @@ Server-only authentication logic.
 
 Examples:
 
-* cookie/session parsing
-* auth resolution
-* server auth guards
+- cookie/session parsing
+- auth resolution
+- server auth guards
 
 #### `server/api`
 
@@ -880,8 +911,8 @@ Server-only request helpers.
 
 Examples:
 
-* backend-to-backend fetch
-* SSR preload helpers
+- backend-to-backend fetch
+- SSR preload helpers
 
 #### `server/config`
 
@@ -927,29 +958,29 @@ This is the most important part of geofrontFR.
 
 ### Core separation model
 
-* `app` assembles the application runtime
-* `routes` define URL entrypoints and route policy
-* `features` implement behavior and use-cases
-* `entities` define domain objects and their representation
-* `components` provide shared UI
-* `shared` provides reusable infrastructure
-* `server` isolates server-only logic
+- `app` assembles the application runtime
+- `routes` define URL entrypoints and route policy
+- `features` implement behavior and use-cases
+- `entities` define domain objects and their representation
+- `components` provide shared UI
+- `shared` provides reusable infrastructure
+- `server` isolates server-only logic
 
 ### Mental model
 
-* `features` = behavior
-* `entities` = domain object
-* `components` = shared UI
-* `shared` = generic cross-cutting support
+- `features` = behavior
+- `entities` = domain object
+- `components` = shared UI
+- `shared` = generic cross-cutting support
 
 ### Quick examples
 
-* `ExampleFilterPanel` → `features/example/components`
-* `Button` → `components/ui`
-* `ConfirmDialog` → `components/common`
-* `ExampleStatusBadge` → `entities/example/ui`
-* `normalizeExample` → `entities/example/model`
-* `axiosInstance` → `shared/api`
+- `ExampleFilterPanel` → `features/example/components`
+- `Button` → `components/ui`
+- `ConfirmDialog` → `components/common`
+- `ExampleStatusBadge` → `entities/example/ui`
+- `normalizeExample` → `entities/example/model`
+- `axiosInstance` → `shared/api`
 
 ---
 
@@ -959,21 +990,21 @@ Keep dependencies flowing inward and downward in responsibility.
 
 ### Recommended dependency direction
 
-* `app` may depend on everything needed for assembly
-* `routes` may depend on `features`, `components`, `entities`, and `shared`
-* `features` may depend on `entities`, `components`, and `shared`
-* `entities` may depend on `shared`
-* `components` may depend on `shared`
-* `shared` should depend on as little as possible
-* `server` may depend on `shared`, but client code must not depend on `server`
+- `app` may depend on everything needed for assembly
+- `routes` may depend on `features`, `components`, `entities`, and `shared`
+- `features` may depend on `entities`, `components`, and `shared`
+- `entities` may depend on `shared`
+- `components` may depend on `shared`
+- `shared` should depend on as little as possible
+- `server` may depend on `shared`, but client code must not depend on `server`
 
 ### Anti-rules
 
-* `shared` must not import from `features`
-* `shared` must not import from `routes`
-* `entities` must not import from `features`
-* `components/ui` must not import domain-specific feature code
-* client-only modules must not import `server/`*
+- `shared` must not import from `features`
+- `shared` must not import from `routes`
+- `entities` must not import from `features`
+- `components/ui` must not import domain-specific feature code
+- client-only modules must not import `server/`\*
 
 ---
 
@@ -987,16 +1018,16 @@ Use **TanStack Query** as the default source of truth for server-fetched data.
 
 Examples:
 
-* current user
-* example list
-* example detail
-* notifications
-* dashboard metrics
+- current user
+- example list
+- example detail
+- notifications
+- dashboard metrics
 
 Rules:
 
-* do not duplicate server state into Zustand unless there is a very explicit reason
-* prefer query invalidation/refetch over manual global syncing
+- do not duplicate server state into Zustand unless there is a very explicit reason
+- prefer query invalidation/refetch over manual global syncing
 
 ### Client state
 
@@ -1004,17 +1035,17 @@ Use **Zustand** for client-only interaction state.
 
 Examples:
 
-* sidebar open/close
-* modal visibility
-* filter panel toggle
-* wizard step
-* draft UI state
+- sidebar open/close
+- modal visibility
+- filter panel toggle
+- wizard step
+- draft UI state
 
 Rules:
 
-* keep Zustand scoped by responsibility
-* app-wide UI state → `app/store`
-* feature-scoped state → `features/*/store`
+- keep Zustand scoped by responsibility
+- app-wide UI state → `app/store`
+- feature-scoped state → `features/*/store`
 
 ### Current user rule
 
@@ -1022,9 +1053,9 @@ The current authenticated user is treated as server state.
 
 Recommended pattern:
 
-* fetch current user with Query
-* cache under a stable auth query key
-* derive booleans like `isAuthenticated` from query data when possible
+- fetch current user with Query
+- cache under a stable auth query key
+- derive booleans like `isAuthenticated` from query data when possible
 
 ---
 
@@ -1034,25 +1065,25 @@ geofrontFR does **not** use a generic top-level `services/` directory.
 
 Why:
 
-* `services` is too vague
-* it tends to become a dumping ground
-* responsibility boundaries become unclear
+- `services` is too vague
+- it tends to become a dumping ground
+- responsibility boundaries become unclear
 
 Instead, place code by responsibility:
 
-* feature-specific API calls → `features/*/api`
-* shared HTTP infrastructure → `shared/api`
-* domain logic → `entities/*/model`
-* feature workflow helpers → `features/*/utils`
-* server-only auth/request logic → `server/`*
-* third-party integration helpers → `shared/lib`
+- feature-specific API calls → `features/*/api`
+- shared HTTP infrastructure → `shared/api`
+- domain logic → `entities/*/model`
+- feature workflow helpers → `features/*/utils`
+- server-only auth/request logic → `server/`\*
+- third-party integration helpers → `shared/lib`
 
 geofrontFR also does **not** use a generic top-level `stores/` directory.
 
 Instead:
 
-* app-wide Zustand stores → `app/store`
-* feature-scoped Zustand stores → `features/*/store`
+- app-wide Zustand stores → `app/store`
+- feature-scoped Zustand stores → `features/*/store`
 
 ---
 
@@ -1062,10 +1093,10 @@ Routes are URL-oriented entrypoints.
 
 Rules:
 
-* route files should stay thin
-* route files may perform route-level loading and guards
-* route files should not contain large reusable business logic
-* route structure should reflect URL structure, not arbitrary technical grouping
+- route files should stay thin
+- route files may perform route-level loading and guards
+- route files should not contain large reusable business logic
+- route structure should reflect URL structure, not arbitrary technical grouping
 
 geofrontFR does not require folders like `_protected/` or `_public/` by default.
 
@@ -1073,9 +1104,9 @@ Authentication is treated as route policy, not as primary URL grouping.
 
 Recommended approach:
 
-* use `beforeLoad` for auth checks and redirects
-* use pathless layout routes only when they improve clarity
-* keep URL structure centered on user-facing route design
+- use `beforeLoad` for auth checks and redirects
+- use pathless layout routes only when they improve clarity
+- keep URL structure centered on user-facing route design
 
 ---
 
@@ -1085,16 +1116,16 @@ Prefer route-oriented loading and query-based caching.
 
 Rules:
 
-* route entrypoints decide what data a screen needs
-* reusable fetching logic belongs in feature hooks or feature query functions
-* TanStack Query remains the default cache/source for remote data
-* avoid scattered ad hoc fetching deep in the tree unless it is truly local UI data
+- route entrypoints decide what data a screen needs
+- reusable fetching logic belongs in feature hooks or feature query functions
+- TanStack Query remains the default cache/source for remote data
+- avoid scattered ad hoc fetching deep in the tree unless it is truly local UI data
 
 Recommended separation:
 
-* route decides **when** data is needed
-* feature layer defines **how** data is fetched
-* Query cache stores the result
+- route decides **when** data is needed
+- feature layer defines **how** data is fetched
+- Query cache stores the result
 
 ---
 
@@ -1106,10 +1137,10 @@ Place shared infrastructure in `shared/api`.
 
 Examples:
 
-* axios instance
-* interceptors
-* common request helpers
-* shared error normalization
+- axios instance
+- interceptors
+- common request helpers
+- shared error normalization
 
 ### Feature API layer
 
@@ -1117,15 +1148,15 @@ Place endpoint-specific functions in `features/*/api`.
 
 Examples:
 
-* `getExampleList`
-* `getExampleDetail`
-* `login`
-* `logout`
+- `getExampleList`
+- `getExampleDetail`
+- `login`
+- `logout`
 
 Rules:
 
-* do not put every API function into a single global API directory
-* separate transport infrastructure from endpoint/domain usage
+- do not put every API function into a single global API directory
+- separate transport infrastructure from endpoint/domain usage
 
 ---
 
@@ -1135,18 +1166,25 @@ Errors must be handled consistently across the framework.
 
 ### Categories
 
-* route-level navigation/guard/loading errors
-* API request errors
-* validation errors
-* unexpected runtime errors
+- route-level navigation/guard/loading errors
+- API request errors
+- validation errors
+- unexpected runtime errors
 
 ### Rules
 
-* route-level failures should use route-aware error boundaries or fallback UI
-* request errors should be normalized at the API layer when possible
-* user-facing messages should be intentional, not raw server dumps
-* global catastrophic failures should have a clear fallback screen
-* transient feedback belongs in toast; structural failure belongs in page-level UI
+- route-level failures should use route-aware error boundaries or fallback UI
+- request errors should be normalized at the API layer when possible
+- user-facing messages should be intentional, not raw server dumps
+- global catastrophic failures should have a clear fallback screen
+- transient feedback belongs in toast; structural failure belongs in page-level UI
+
+### Form and Mutation UX
+
+- field-level validation errors belong inline near the corresponding input
+- authentication failures for forms such as sign-in belong in form-level inline UI, not toast
+- network or unknown mutation failures should use `sonner` toast for transient feedback
+- do not rely on seed-local toast implementations when project-standard `sonner` feedback is already defined
 
 ---
 
@@ -1156,17 +1194,101 @@ Authentication is treated as a framework concern, not a random local pattern.
 
 ### Principles
 
-* auth truth comes from the server
-* current user is server state
-* route access is enforced at the route boundary
-* server-only auth helpers stay in `server/auth`
+- auth truth comes from the server
+- current user is server state
+- route access is enforced at the route boundary
+- server-only auth helpers stay in `server/auth`
 
 ### Rules
 
-* use Query for current user data
-* use route guards / `beforeLoad` for protected navigation
-* keep auth UI state separate from auth truth
-* do not use a giant auth Zustand store as the single source of truth
+- use Query for current user data
+- use route guards / `beforeLoad` for protected navigation
+- keep auth UI state separate from auth truth
+- do not use a giant auth Zustand store as the single source of truth
+
+### Auth Modes
+
+`VITE_AUTH_MODE` supports two external API contracts:
+
+- `cookie`: the external API sets auth cookies and the frontend reuses them
+- `bearer`: the external API returns `accessToken` and `refreshToken` in the response body
+
+Current implementation detail:
+
+- in `cookie` mode, auth requests go directly from the frontend runtime to the external API
+- in `bearer` mode, auth requests go through TanStack Start BFF handlers
+- in `bearer` mode, the browser does **not** store the raw refresh token in `AUTH_SESSION_COOKIE_NAME`
+- `AUTH_SESSION_COOKIE_NAME` stores a server session id, and the actual `accessToken` / `refreshToken` stay in a Redis-backed server auth session store
+
+### Current Auth Flow Matrix
+
+| Render mode | `cookie` mode                                                                                                                                                                                                                                                                                                                                                                                  | `bearer` mode                                                                                                                                                                                                                                                                                                                           |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CSR         | Browser calls auth APIs directly with `Query`/mutations. Cookie-based auth is sent to the external API with `withCredentials`. `me` is cached under the auth query key.                                                                                                                                                                                                                        | Browser auth actions still call BFF server functions. The browser sends only the httpOnly session cookie, and the BFF reads the session id from `AUTH_SESSION_COOKIE_NAME`, loads the stored bearer session from Redis, and injects the required headers before calling the external API. `me` is still cached with `Query`.            |
+| SSR         | `signin` / `signout` / `refresh` still go from the browser directly to the external API. For SSR protected-route auth resolution, TanStack Start reads the incoming request cookie header and calls external `/auth/me` on the server. Other general data requests usually continue through the normal browser + `Query` flow unless a route explicitly introduces a server-side preload path. | Browser auth requests still enter the same BFF path first. TanStack Start reads `AUTH_SESSION_COOKIE_NAME`, resolves the server-side bearer session from Redis, sends `Authorization` for access-token-based requests such as `/auth/me`, sends `x-refresh-token` for refresh requests, and uses both headers when sign-out needs them. |
+
+### Bearer Mode Notes
+
+The current bearer implementation is SSR-oriented BFF auth:
+
+- sign-in calls the external API login endpoint from the server
+- the server stores `accessToken`, `refreshToken`, `tokenType`, and expiry in a Redis-backed server auth session store
+- the browser receives only an httpOnly session cookie containing the generated session id
+- after sign-in, later auth requests read the session id from the cookie and resolve token data from the Redis-backed server auth session store
+- `/auth/me` is resolved on the server with the stored access token via the `Authorization` header
+- when `/auth/me` returns `401`, the server refreshes with `x-refresh-token`, updates the Redis-backed server auth session, and retries
+- sign-out clears both the upstream auth state and the local Redis-backed server auth session
+
+This means bearer mode is currently designed for SSR + BFF usage, even when the user action starts from CSR UI.
+
+### Redis Session Runtime
+
+Bearer mode expects a Redis-backed auth session store.
+
+Development example:
+
+```bash
+docker compose --env-file .env.development -f docker-compose.dev.yml up -d
+```
+
+Production example:
+
+```bash
+docker compose --env-file .env.production -f docker-compose.prod.yml up -d
+```
+
+Recommended env values depend on where the frontend server runs:
+
+- when the app runs on the host machine and Redis runs in Docker, use host-accessible values such as `REDIS_HOST=127.0.0.1`
+- when both app and Redis run inside the same Docker network, use the Redis service name such as `REDIS_HOST=redis`
+
+### SPA Mode Notes
+
+TanStack Start also supports SPA mode via `tanstackStart({ spa: { enabled: true } })`.
+
+Official references:
+
+- https://tanstack.com/start/latest/docs/framework/react/guide/spa-mode
+- https://tanstack.com/start/v0/docs/framework/react/guide/selective-ssr
+
+Current project impact if SPA mode is enabled without other changes:
+
+- initial route rendering will stop relying on SSR route resolution and move to client-side route resolution after hydration
+- the current SSR auth guard path in `_app` route `beforeLoad` and `server/auth/requireUser` will no longer be the primary first-request auth gate
+- `cookie` mode will lose its current SSR protected-route `/auth/me` resolution path and will depend more heavily on client `Query` bootstrap
+- `bearer` mode can still keep BFF auth handlers, but their role becomes token protection and refresh orchestration rather than SSR-first auth resolution
+- protected pages may briefly show pending client state before redirecting because auth is determined after hydration
+- server functions and server routes can still be used, but deployment must continue to forward server-function requests correctly
+
+Recommended path to move this project safely to SPA-only:
+
+- enable SPA mode in `vite.config.ts`
+- remove the current SSR-only auth branch from route guards and use client-side `ensureCurrentUser(...)` as the primary protected-route check
+- keep BFF auth handlers for `bearer` mode so access and refresh tokens remain hidden from the browser
+- update the auth-mode documentation so `cookie` mode is described as browser-driven auth resolution rather than SSR-assisted auth resolution
+- add explicit pending/loading UX for protected routes to avoid auth flicker during hydration
+- verify deployment routing so `/_serverFn/*` and other server-only endpoints still reach the app server correctly
+- if a gradual migration is preferred, consider selective SSR reduction first instead of switching the whole app to SPA mode at once
 
 ---
 
@@ -1176,25 +1298,25 @@ geofrontFR uses TanStack Start, so SSR/CSR boundaries must remain explicit.
 
 ### SSR responsibilities
 
-* request-aware logic
-* cookie/session access
-* private env access
-* server-only preloading
-* server-only auth resolution
+- request-aware logic
+- cookie/session access
+- private env access
+- server-only preloading
+- server-only auth resolution
 
 ### CSR responsibilities
 
-* user interaction
-* client-only UI state
-* browser APIs
-* visual transitions
+- user interaction
+- client-only UI state
+- browser APIs
+- visual transitions
 
 ### Rules
 
-* server-only logic belongs in `server/`*
-* do not import `server/`* into client-only UI modules
-* make request-aware logic explicit
-* avoid hiding server/client boundaries behind vague abstractions
+- server-only logic belongs in `server/`\*
+- do not import `server/`\* into client-only UI modules
+- make request-aware logic explicit
+- avoid hiding server/client boundaries behind vague abstractions
 
 ---
 
@@ -1208,9 +1330,9 @@ Location: `components/ui`
 
 Examples:
 
-* Button
-* Input
-* Dialog
+- Button
+- Input
+- Dialog
 
 ### 2. Common UI
 
@@ -1218,9 +1340,9 @@ Location: `components/common`
 
 Examples:
 
-* ConfirmDialog
-* EmptyState
-* LoadingSection
+- ConfirmDialog
+- EmptyState
+- LoadingSection
 
 ### 3. Entity UI
 
@@ -1228,8 +1350,8 @@ Location: `entities/*/ui`
 
 Examples:
 
-* UserAvatar
-* ExampleStatusBadge
+- UserAvatar
+- ExampleStatusBadge
 
 ### 4. Feature UI
 
@@ -1237,15 +1359,15 @@ Location: `features/*/components`
 
 Examples:
 
-* LoginForm
-* ExampleFilterPanel
-* ExampleCreateForm
+- LoginForm
+- ExampleFilterPanel
+- ExampleCreateForm
 
 ### Rule of thumb
 
-* if it represents a domain object → `entities/*/ui`
-* if it drives a use-case/workflow → `features/*/components`
-* if it is generic UI → `components/`*
+- if it represents a domain object → `entities/*/ui`
+- if it drives a use-case/workflow → `features/*/components`
+- if it is generic UI → `components/`\*
 
 ---
 
@@ -1255,20 +1377,20 @@ Environment values must be explicit and validated.
 
 ### Goals
 
-* separate public and private configuration
-* parse and validate environment values
-* avoid untyped environment access scattered across the app
+- separate public and private configuration
+- parse and validate environment values
+- avoid untyped environment access scattered across the app
 
 ### Recommended split
 
-* client/public config wiring → `app/config`
-* server/private config wiring → `server/config`
+- client/public config wiring → `app/config`
+- server/private config wiring → `server/config`
 
 ### Rules
 
-* do not read raw env values everywhere
-* centralize environment parsing
-* validate critical values early
+- do not read raw env values everywhere
+- centralize environment parsing
+- validate critical values early
 
 ---
 
@@ -1280,34 +1402,34 @@ Testing is split by responsibility.
 
 Use **Vitest** for:
 
-* utility functions
-* model logic
-* isolated hooks
-* isolated UI logic
+- utility functions
+- model logic
+- isolated hooks
+- isolated UI logic
 
 ### Component/integration tests
 
 Use **Vitest** with testing utilities for:
 
-* feature component behavior
-* interaction logic
-* rendering with providers
+- feature component behavior
+- interaction logic
+- rendering with providers
 
 ### E2E tests
 
 Use **Playwright** for:
 
-* auth flow
-* route navigation
-* real user scenarios
-* browser integration behavior
+- auth flow
+- route navigation
+- real user scenarios
+- browser integration behavior
 
 ### Rules
 
-* colocate test files near source when useful
-* keep shared test helpers in `test/`*
-* avoid over-mocking framework boundaries unless necessary
-* prioritize behavior over implementation details
+- colocate test files near source when useful
+- keep shared test helpers in `test/`\*
+- avoid over-mocking framework boundaries unless necessary
+- prioritize behavior over implementation details
 
 ---
 
@@ -1319,40 +1441,40 @@ Always decide the source of truth first.
 
 #### Current authenticated user
 
-* source of truth: server + TanStack Query
+- source of truth: server + TanStack Query
 
 #### Example list/detail
 
-* source of truth: server + TanStack Query
+- source of truth: server + TanStack Query
 
 #### Sidebar open state
 
-* source of truth: Zustand or local component state
+- source of truth: Zustand or local component state
 
 #### Dialog visibility
 
-* source of truth: local state or Zustand if globally coordinated
+- source of truth: local state or Zustand if globally coordinated
 
 #### Form input
 
-* source of truth: TanStack Form
+- source of truth: TanStack Form
 
 #### Entity parsing/shape validation
 
-* source of truth: Zod schemas
+- source of truth: Zod schemas
 
 #### Environment variables
 
-* source of truth: `app/config/public-env.ts` for client-safe values
-* source of truth: `server/config/env.ts` for server-only values
+- source of truth: `app/config/public-env.ts` for client-safe values
+- source of truth: `server/config/env.ts` for server-only values
 
 Rules:
 
-* never read `process.env` directly in feature, route, component, or shared runtime code
-* never read `import.meta.env` directly outside the public env module
-* validate env once at the config boundary and export typed values
-* separate client-safe env and server-only env explicitly
-* only expose `VITE_*` values to the client bundle
+- never read `process.env` directly in feature, route, component, or shared runtime code
+- never read `import.meta.env` directly outside the public env module
+- validate env once at the config boundary and export typed values
+- separate client-safe env and server-only env explicitly
+- only expose `VITE_*` values to the client bundle
 
 ---
 
@@ -1392,19 +1514,19 @@ Use `example` as the reference implementation for the intended layer flow.
 
 ### File ownership guide
 
-* `src/entities/example/types/example.ts`
+- `src/entities/example/types/example.ts`
   Domain type definition.
-* `src/entities/example/schemas/exampleSchema.ts`
+- `src/entities/example/schemas/exampleSchema.ts`
   Entity validation and parsing schema.
-* `src/features/example/schemas/exampleFilterSchema.ts`
+- `src/features/example/schemas/exampleFilterSchema.ts`
   Feature-local filter schema.
-* `src/features/example/store/useExampleFilterStore.ts`
+- `src/features/example/store/useExampleFilterStore.ts`
   Feature-scoped client state only.
-* `src/features/example/utils/filterExamples.ts`
+- `src/features/example/utils/filterExamples.ts`
   Feature-local workflow helper.
-* `src/shared/api/types.ts`
+- `src/shared/api/types.ts`
   App-level API error shape shared across features.
-* `src/shared/api/apiClient.ts`
+- `src/shared/api/apiClient.ts`
   Thin transport helper for shared HTTP verbs.
 
 If a new developer wants to trace one screen end-to-end, they should start from the route file, then follow the query options, feature API, entity parser, and finally the feature component.
@@ -1415,16 +1537,16 @@ If a new developer wants to trace one screen end-to-end, they should start from 
 
 Avoid the following:
 
-* generic `services/` dumping ground
-* generic top-level `stores/` dumping ground
-* duplicating server state into Zustand by default
-* placing heavy business logic directly in route files
-* moving feature-local helpers into `shared/` too early
-* mixing server-only code into client bundles
-* mixing primitive UI and workflow UI in one folder
-* treating `shared/` as “misc”
-* hiding auth truth inside a giant client store
-* architecture that makes the source of truth unclear
+- generic `services/` dumping ground
+- generic top-level `stores/` dumping ground
+- duplicating server state into Zustand by default
+- placing heavy business logic directly in route files
+- moving feature-local helpers into `shared/` too early
+- mixing server-only code into client bundles
+- mixing primitive UI and workflow UI in one folder
+- treating `shared/` as “misc”
+- hiding auth truth inside a giant client store
+- architecture that makes the source of truth unclear
 
 ---
 
@@ -1434,14 +1556,14 @@ geofrontFR is built around explicit boundaries.
 
 The architecture works when each layer keeps its responsibility:
 
-* `app` assembles
-* `routes` enter
-* `features` execute
-* `entities` describe
-* `components` present
-* `shared` supports
-* `server` isolates
-* `test` verifies
+- `app` assembles
+- `routes` enter
+- `features` execute
+- `entities` describe
+- `components` present
+- `shared` supports
+- `server` isolates
+- `test` verifies
 
 If responsibility is unclear, the code is probably in the wrong place.
 
@@ -1463,7 +1585,6 @@ When unsure where code belongs, ask in this order:
 The first clear answer usually determines the correct directory.
 
 ---
-
 
 ## Seed Usage Policy
 

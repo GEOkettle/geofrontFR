@@ -1,11 +1,7 @@
 import { create } from 'zustand'
 
-import {
-  applyThemeMode,
-  getStoredThemeMode
-  
-} from '#/app/config/theme'
-import type {ThemeMode} from '#/app/config/theme';
+import { applyThemeMode, getStoredThemeMode } from '#/app/config/theme'
+import type { ThemeMode } from '#/app/config/theme'
 
 interface ThemeStore {
   mode: ThemeMode
