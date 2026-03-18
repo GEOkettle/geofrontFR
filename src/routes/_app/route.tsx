@@ -11,6 +11,7 @@ import Header from '#/features/seed/partials/Header'
 import Sidebar from '#/features/seed/partials/Sidebar'
 
 export const Route = createFileRoute('/_app')({
+  // ssr:false,
   beforeLoad: async ({ context }) => {
     if (typeof document === 'undefined') {
       const { requireUser } = await import('#/server/auth/requireUser')

@@ -1,20 +1,23 @@
-import axios from 'axios'
-
 import { publicEnv } from '#/app/config/public-env'
 import { useAuthCredentialStore } from '#/features/auth/store/authCredentialStore'
 import {
   isBearerAuthMode,
   isCookieAuthMode,
 } from '#/features/auth/utils/authMode'
-import { normalizeApiError } from '#/shared/api/normalizeApiError'
+import {
+  attachApiErrorInterceptor,
+  createBaseApiClient,
+} from '#/shared/api/axiosUtils'
 
-export const axiosInstance = axios.create({
-  baseURL: publicEnv.VITE_API_BASE_URL || undefined,
-  withCredentials: isCookieAuthMode(),
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
+export const axiosInstance = attachApiErrorInterceptor(
+  createBaseApiClient({
+    baseURL: publicEnv.VITE_API_BASE_URL || undefined,
+    withCredentials: isCookieAuthMode(),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }),
+)
 
 axiosInstance.interceptors.request.use((config) => {
   if (isBearerAuthMode()) {
@@ -38,17 +41,3 @@ axiosInstance.interceptors.request.use((config) => {
 
   return config
 })
-
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    const normalizedError = normalizeApiError(error)
-
-    if (import.meta.env.DEV) {
-      console.error('[shared/api] raw request error', error)
-      console.error('[shared/api] normalized request error', normalizedError)
-    }
-
-    return Promise.reject(normalizedError)
-  },
-)

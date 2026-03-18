@@ -39,11 +39,20 @@ describe('normalizeApiError', () => {
     }
 
     expect(normalizeApiError(error)).toEqual({
-      code: 'api_error',
+      code: 'network_error',
       message: 'Network Error',
       status: undefined,
       details: undefined,
       fieldErrors: undefined,
+    })
+  })
+
+  it('normalizes node-style connection errors as network failures', () => {
+    const error = new Error('connect ECONNREFUSED 127.0.0.1:5001')
+
+    expect(normalizeApiError(error)).toEqual({
+      code: 'network_error',
+      message: 'connect ECONNREFUSED 127.0.0.1:5001',
     })
   })
 
@@ -54,5 +63,15 @@ describe('normalizeApiError', () => {
       code: 'unknown_error',
       message: 'Something unexpected happened',
     })
+  })
+
+  it('returns normalized api errors as-is', () => {
+    const error = {
+      code: 'network_error',
+      message: 'connect ECONNREFUSED 127.0.0.1:5001',
+      status: undefined,
+    }
+
+    expect(normalizeApiError(error)).toBe(error)
   })
 })

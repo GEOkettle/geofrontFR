@@ -10,6 +10,10 @@ type RootErrorPageProps = {
 function isNetworkLikeError(error: unknown) {
   const apiError = normalizeApiError(error)
 
+  if (apiError.code === 'network_error') {
+    return true
+  }
+
   return (
     apiError.status == null &&
     /network error|failed to fetch|load failed/i.test(apiError.message)
