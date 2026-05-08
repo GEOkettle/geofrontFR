@@ -317,6 +317,7 @@ feature 비종속 UI 레이어.
 
 - 여기 있는 컴포넌트는 특정 feature 워크플로우에 강하게 결합되면 안 된다
 - 특정 유스케이스에 깊게 묶인 컴포넌트는 `features/*/components`에 둔다
+- `shadcn/ui` CLI로 추가하는 컴포넌트는 프로젝트 `components.json` alias 설정에 따라 기본적으로 `src/components/ui` 아래에 생성한다
 
 ---
 
@@ -407,6 +408,10 @@ feature 비종속 UI 레이어.
 - 주 export가 React component인 파일은 `PascalCase.tsx`를 사용한다
 - hook과 utility function 이름은 `camelCase`를 사용한다
 - hook/utility 파일명은 `camelCase.ts` 또는 `camelCase.tsx`를 사용한다
+- 변수명, 함수명, 상수명은 가능하면 최대 3단어로 유지한다
+- 정말 피하기 어려운 경우에만 4단어까지 허용한다
+- 중복을 줄이고 가독성을 해치지 않는 선에서 축약어를 적극 허용한다
+- 단, 축약 때문에 의미가 불명확해지면 축약하지 않는다
 - 같은 범주 안에서 여러 네이밍 스타일을 섞지 않는다
 
 ---

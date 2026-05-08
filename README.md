@@ -314,6 +314,7 @@ Rules:
 
 - components here must not be tightly coupled to a specific feature workflow
 - if a component is deeply tied to one use-case, it belongs in `features/*/components`
+- `shadcn/ui` components added via the CLI should be generated under `src/components/ui` according to the project `components.json` aliases
 
 ---
 
@@ -404,6 +405,10 @@ Rules:
 - files whose primary export is a React component use `PascalCase.tsx`
 - hooks and utility function names use `camelCase`
 - files for hooks and utility functions use `camelCase.ts` or `camelCase.tsx`
+- keep variable, function, and constant names to at most 3 words when possible
+- allow up to 4 words only when it is genuinely hard to avoid
+- actively allow abbreviations when they reduce duplication and do not hurt readability
+- do not abbreviate when the meaning becomes unclear
 - do not mix multiple naming styles for the same category
 
 ---
